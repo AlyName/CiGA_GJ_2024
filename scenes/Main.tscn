@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://r68vkg2gyh5v"]
+
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_4phu8"]
+[ext_resource type="Script" path="res://scripts/CardWheel.cs" id="2_y1ax8"]
+[ext_resource type="PackedScene" uid="uid://beh4yyw8p54pc" path="res://scenes/card_move.tscn" id="3_vfrs1"]
+[ext_resource type="Script" path="res://scripts/MouseInput.cs" id="4_gfldf"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_4phu8")
+Card = ExtResource("3_vfrs1")
+
+[node name="CardWheel" type="Node2D" parent="."]
+script = ExtResource("2_y1ax8")
+center = Vector2(1440, 960)
+
+[node name="MouseInput" type="Node" parent="."]
+script = ExtResource("4_gfldf")
