@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://beh4yyw8p54pc"]
+
+[ext_resource type="Texture2D" uid="uid://c634e8v6ydbx0" path="res://card.png" id="1_fb0cw"]
+[ext_resource type="Script" path="res://scripts/CardMove.cs" id="1_vnvf1"]
+
+[node name="CardMove" type="Sprite2D"]
+texture = ExtResource("1_fb0cw")
+script = ExtResource("1_vnvf1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -42.0
+offset_top = -17.0
+offset_right = 43.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 24
+text = "# 10"
+horizontal_alignment = 1
+vertical_alignment = 1
