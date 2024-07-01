@@ -10,8 +10,8 @@ using System.Collections.Generic;
 /// </remarks>
 public class FlowNodeLine
 {
-    private Dictionary<FlowNode, Action<object>> nodeEnterDic = new();
-    private Dictionary<FlowNode, Action<object>> nodeExitDic = new();
+    private Dictionary<string, Action<object>> nodeEnterDic = new();
+    private Dictionary<string, Action<object>> nodeExitDic = new();
     /// <summary> 上下文数据，暂时写成object吧 </summary>
     private object mContext;
     
@@ -23,25 +23,25 @@ public class FlowNodeLine
         MaxRound = maxRound;
     }
 
-    public FlowNodeLine AddEnterNodeAct(FlowNode flowNode, Action<object> act)
+    public FlowNodeLine AddEnterNodeAct(string flowNode, Action<object> act)
     {
         nodeEnterDic.Add(flowNode, act);
         return this;
     }
     
-    public FlowNodeLine AddExitNodeAct(FlowNode flowNode, Action<object> act)
+    public FlowNodeLine AddExitNodeAct(string flowNode, Action<object> act)
     {
         nodeExitDic.Add(flowNode, act);
         return this;
     }
     
-    public void OnEnterNode(FlowNode flowNode)
+    public void OnEnterNode(string flowNode)
     {
         if(nodeEnterDic.TryGetValue(flowNode, out var act))
             act?.Invoke(mContext);
     }
     
-    public void OnExitNode(FlowNode flowNode)
+    public void OnExitNode(string flowNode)
     {
         if(nodeExitDic.TryGetValue(flowNode, out var act))
             act?.Invoke(mContext);

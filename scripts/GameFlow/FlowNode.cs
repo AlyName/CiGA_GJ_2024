@@ -9,10 +9,12 @@ public class FlowNode
     private readonly Action mOnEnterNodeAct;
     private Action mOnExitNodeAct;
 
+    public string NodeName { get; }
     public bool IsLastNode { get; private set; } = false;
     
-    public FlowNode(Action onEnterNodeAct, Action onExitNodeAct)
+    public FlowNode(string nodeName, Action onEnterNodeAct, Action onExitNodeAct)
     {
+        NodeName = nodeName;
         mOnEnterNodeAct = onEnterNodeAct;
         mOnExitNodeAct = onExitNodeAct;
     }

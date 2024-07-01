@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
 
 /// <summary>
 /// 回合流程
@@ -75,7 +73,7 @@ public class CardGameFlow:
         {
             mCurNode.OnExitNode();//退出节点
             foreach (var flowNodeLine in mAllFlowNodeLine)//执行退出节点时的一些效果
-                flowNodeLine.OnExitNode(mCurNode);
+                flowNodeLine.OnExitNode(mCurNode.NodeName);
         }
         
         if (mCurNode?.IsLastNode == true)//是否是最后一个节点
@@ -91,7 +89,7 @@ public class CardGameFlow:
             mCurNode.OnEnterNode();
 
             foreach (var flowNodeLine in mAllFlowNodeLine)//执行进入节点时的一些效果
-                flowNodeLine.OnEnterNode(mCurNode);
+                flowNodeLine.OnEnterNode(mCurNode.NodeName);
             
             if(tempNode is not null)
                 mAllNodes.Enqueue(tempNode);
@@ -119,9 +117,9 @@ public class CardGameFlow:
     public CardGameFlow()
     {
         //todo 这里是举例子
-        mAllNodes.Enqueue(new FlowNode(OnPlayerDrawCard, null));
-        mAllNodes.Enqueue(new FlowNode(OnPlayerUseACard, AfterPlayerUseACard));
-        mAllNodes.Enqueue(new FlowNode(OnPlayerUseACard, AfterPlayerUseACard).SetLastNode());
+        mAllNodes.Enqueue(new FlowNode("玩家抽卡", OnPlayerDrawCard, null));
+        mAllNodes.Enqueue(new FlowNode("玩家打出第一张牌", OnPlayerUseACard, AfterPlayerUseACard));
+        mAllNodes.Enqueue(new FlowNode("玩家打出第二张牌", OnPlayerUseACard, AfterPlayerUseACard).SetLastNode());
     }
 
     
