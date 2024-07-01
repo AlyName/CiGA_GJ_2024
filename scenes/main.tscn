@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://r68vkg2gyh5v"]
 
 [ext_resource type="Texture2D" uid="uid://c634e8v6ydbx0" path="res://card.png" id="1_woc1f"]
-[ext_resource type="Script" path="res://scripts/Card.cs" id="2_twqoq"]
+[ext_resource type="Script" path="res://scenes/Card.cs" id="2_6j44y"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Card" type="Sprite2D" parent="."]
-position = Vector2(482, 261)
+position = Vector2(632, 354)
 texture = ExtResource("1_woc1f")
-script = ExtResource("2_twqoq")
+script = ExtResource("2_6j44y")
