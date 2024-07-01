@@ -111,8 +111,8 @@ public partial class CardWheel : Node2D{
 
 		// ver 2
 
-		if(get_mouse_input().is_mouse_press&&get_mouse_input().mouse_on_node_name!="")return;
-		// if(get_mouse_input().time_until_last_press<0.1f&&get_mouse_input().last_on_node_name!="")return;
+		if(MouseInput.get_mouse_input().is_mouse_press&&MouseInput.get_mouse_input().mouse_on_node_name!="")return;
+		// if(MouseInput.get_mouse_input().time_until_last_press<0.1f&&MouseInput.get_mouse_input().last_on_node_name!="")return;
 
 		List<Vector2> circle_p=new List<Vector2>();
 		for(int i=0;i<card_num+add_wait_num;i++){
@@ -153,13 +153,13 @@ public partial class CardWheel : Node2D{
 		if(angle>2*Math.PI)angle-=2*(float)Math.PI;
 		if(angle<0)angle+=2*(float)Math.PI;
 
-		if(get_mouse_input().is_mouse_press&&get_mouse_input().mouse_on_node_name==""){
+		if(MouseInput.get_mouse_input().is_mouse_press&&MouseInput.get_mouse_input().mouse_on_node_name==""){
 			if(now_pressed==0){
 				press_angle=angle;
-				press_mouse_pos=get_mouse_input().mouse_pos;
+				press_mouse_pos=MouseInput.get_mouse_input().mouse_pos;
 			}
 			now_pressed=1;
-			angle=press_angle+(get_mouse_input().mouse_pos-press_mouse_pos).X*sa;
+			angle=press_angle+(MouseInput.get_mouse_input().mouse_pos-press_mouse_pos).X*sa;
 		}else{
 			now_pressed=0;
 			int card_num=cards.Count;
@@ -185,11 +185,10 @@ public partial class CardWheel : Node2D{
 
 		}
 
-		
-		
-
 	}
 
-	private Main get_main(){return GetNode("/root/Main") as Main;}
-	private MouseInput get_mouse_input(){return get_main().GetNode("MouseInput") as MouseInput;}
+	public int left_card(){
+		return cards.Count;
+	}
+
 }

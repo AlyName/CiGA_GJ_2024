@@ -27,6 +27,8 @@ public partial class CardMove : Sprite2D{
 	public int is_use,can_drag=0,leave_place=0;
 
 	public Vector2 n_scale=new Vector2(1,1);
+
+	public int score=0;
 	
 	public override void _Ready(){
 		_returnTimer = new Timer();
@@ -51,10 +53,10 @@ public partial class CardMove : Sprite2D{
 	}
 
 	private void check_dragging(){
-		if(get_mouse_input().mouse_on_node_name==Name){
+		if(MouseInput.get_mouse_input().mouse_on_node_name==Name){
 			if(can_drag==1){
 				// Debug.WriteLine("on"+card_id.ToString());
-				_dragging=get_mouse_input().is_mouse_press;
+				_dragging=MouseInput.get_mouse_input().is_mouse_press;
 			}
 		}else{
 			_dragging=false;
@@ -91,7 +93,10 @@ public partial class CardMove : Sprite2D{
 			//TODO
 			// delete
 			n_scale-=new Vector2(0.05f,0.05f);
-			if(n_scale.X<0.1f)QueueFree();
+			if(n_scale.X<0.1f){
+				MonoControl.get_control().add_card_event(this);
+				QueueFree();
+			}
 			return;
 		}else if(state==3){
 			Vector2 direction = _initialPosition - Position;
@@ -108,8 +113,8 @@ public partial class CardMove : Sprite2D{
 		if(state==1){
 			can_drag=1;
 			float top_y=viewrect.Position.Y+viewrect.Size.Y,bottom_y=viewrect.Position.Y;
-			float mouse_y=get_mouse_input().mouse_pos.Y;
-			Position=get_mouse_input().mouse_pos;
+			float mouse_y=MouseInput.get_mouse_input().mouse_pos.Y;
+			Position=MouseInput.get_mouse_input().mouse_pos;
 			if(Position.Y>upper_y-shake_r||Position.Y<lower_y+shake_r){
 				Vector2 random_shake=new Vector2(GD.Randf()*shake_r*2-shake_r,GD.Randf()*shake_r*2-shake_r);
 				Position=Position+random_shake;
@@ -122,7 +127,8 @@ public partial class CardMove : Sprite2D{
 	}
 
 	private void check_sprite(){
-		GetNode<Label>("Label").Text="# "+card_id.ToString();
+		if(score==-1)GetNode<Label>("Label").Text="START";
+		else GetNode<Label>("Label").Text=score.ToString();
 		Scale+=(n_scale-Scale)*0.1f;
 	}
 
@@ -134,6 +140,4 @@ public partial class CardMove : Sprite2D{
 		
 	}
 
-	private Main get_main(){return GetNode("/root/Main") as Main;}
-	private MouseInput get_mouse_input(){return get_main().GetNode("MouseInput") as MouseInput;}
 }

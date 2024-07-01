@@ -11,6 +11,12 @@ public partial class MouseInput : Node{
 	public float time_until_last_press=0;
 
 	private Vector2 last_mouse_pos;
+
+	public static MouseInput instance;
+
+	public MouseInput(){
+		instance=this;
+	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 	}
@@ -55,13 +61,13 @@ public partial class MouseInput : Node{
 		if(is_mouse_press)return;
 		mouse_on_node_name="";
 
-		foreach(Node node in get_main().GetChildren()){
+		foreach(Node node in Main.get_main().GetChildren()){
 			if(node is CardMove card){
 				
 				if(card.can_drag==1&&card.GetRect().HasPoint(card.ToLocal(mouse_pos))){
-					if(get_main().GetNodeOrNull(mouse_on_node_name) is null){
+					if(Main.get_main().GetNodeOrNull(mouse_on_node_name) is null){
 						mouse_on_node_name=card.Name;
-					}else if((get_main().GetNode(mouse_on_node_name) as Sprite2D).ZIndex<card.ZIndex){
+					}else if((Main.get_main().GetNode(mouse_on_node_name) as Sprite2D).ZIndex<card.ZIndex){
 						mouse_on_node_name=card.Name;
 					}
 				}
@@ -73,5 +79,7 @@ public partial class MouseInput : Node{
 		}
 	}
 
-	private Main get_main(){return GetNode("/root/Main") as Main;}
+	public static MouseInput get_mouse_input(){
+		return instance;
+	}
 }
