@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Ci Ga Gj 2024"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [dotnet]
@@ -21,4 +21,4 @@ project/assembly_name="Ci Ga Gj 2024"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
