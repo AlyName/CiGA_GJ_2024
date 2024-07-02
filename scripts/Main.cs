@@ -11,7 +11,7 @@ public partial class Main : Node2D{
 
 	public static Main instance;
 
-	public int overall_id;
+	
 
 	public Main(){
 		instance=this;
@@ -26,7 +26,7 @@ public partial class Main : Node2D{
 		// 	AddChild(card);
 		// 	GetNode<CardWheel>("CardWheel").add_card(i,0);
 		// }
-		generate_card(-1);
+		CardGenerator.get_generator().generate_card("Start");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,14 +34,14 @@ public partial class Main : Node2D{
 		
 	}
 
-	public void generate_card(int card_score){
-		var card = Card.Instantiate() as CardMove;
-		card.Position = new Vector2(0,0);
-		card.card_id=++overall_id;
-		card.score=card_score;
-		AddChild(card);
-		GetNode<CardWheel>("CardWheel").add_card(card.card_id,0);
-	}
+	// public void generate_card(int card_score){
+		// var card = Card.Instantiate() as DefaultCard;
+		// card.Position = new Vector2(0,0);
+		// card.card_id=++overall_id;
+		// card.score=card_score;
+		// AddChild(card);
+		// GetNode<CardWheel>("CardWheel").add_card(card.card_id,0);
+	// }
 
 	public static Main get_main(){
 		return instance;

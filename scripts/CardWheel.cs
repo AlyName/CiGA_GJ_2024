@@ -78,38 +78,6 @@ public partial class CardWheel : Node2D{
 	private void move_cards(){
 		int card_num=cards.Count;
 
-		
-
-		// ver 0
-		// for(int i=0;i<card_num;i++){
-		// 	Vector2 pi=cards[i].Position;
-
-		// ver 1
-		// for(int i=0;i<card_num;i++){
-		// 	Vector2 pi=cards[i].Position;
-		// 	Vector2 pi_ap=Vector2.Zero;
-		// 	for(int j=0;j<card_num;j++){
-		// 		if(i==j)continue;
-		// 		Vector2 pj=cards[j].Position;
-		// 		Vector2 np=pi-pj+new Vector2(GD.Randf()-0.5f,GD.Randf()-0.5f);
-		// 		np=np*eta/(np.Length()*np.Length()*np.Length());
-		// 		pi_ap+=np;
-		// 		Debug.WriteLine(np);
-		// 	}
-			
-		// 	cards[i].Position=pi+pi_ap;
-		// }
-
-		// //normalize
-		// for(int i=0;i<card_num;i++){
-		// 	Vector2 pi=cards[i].Position;
-		// 	Vector2 np=center-pi;
-		// 	float l=np.Length();
-		// 	Vector2 dest=center-np*(r/l);
-		// 	cards[i].Position+=(dest-pi)*tau;
-		// }
-
-		// ver 2
 
 		if(MouseInput.get_mouse_input().is_mouse_press&&MouseInput.get_mouse_input().mouse_on_node_name!="")return;
 		// if(MouseInput.get_mouse_input().time_until_last_press<0.1f&&MouseInput.get_mouse_input().last_on_node_name!="")return;

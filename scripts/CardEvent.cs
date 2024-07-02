@@ -5,8 +5,11 @@ public partial class CardEvent{
 
 	public enum Type{
 		GameStart,
-        AddScore
+		GameEnd,
+        AddScore,
+		Effect
 	}
 	public Type event_type;
     public int score;
+	public Action<LevelManager> action;
 }

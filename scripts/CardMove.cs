@@ -8,6 +8,7 @@ public partial class CardMove : Sprite2D{
 	private Vector2 _initialPosition;
 	private bool _dragging=false;
 	private Timer _returnTimer;
+	public Label card_label;
 	[Export]
 	public float _returnSpeed = 5f;
 	[Export]
@@ -27,8 +28,6 @@ public partial class CardMove : Sprite2D{
 	public int is_use,can_drag=0,leave_place=0;
 
 	public Vector2 n_scale=new Vector2(1,1);
-
-	public int score=0;
 	
 	public override void _Ready(){
 		_returnTimer = new Timer();
@@ -40,6 +39,11 @@ public partial class CardMove : Sprite2D{
 		viewrect=GetViewport().GetVisibleRect();
 		upper_y = viewrect.Position.Y + viewrect.Size.Y-YBound;
 		lower_y = viewrect.Position.Y+YBound;
+
+		card_label=new Label();
+		card_label.Position=new Vector2(0,20);
+		card_label.HorizontalAlignment=HorizontalAlignment.Center;
+		AddChild(card_label);
 	}
 	
 
@@ -94,7 +98,8 @@ public partial class CardMove : Sprite2D{
 			// delete
 			n_scale-=new Vector2(0.05f,0.05f);
 			if(n_scale.X<0.1f){
-				MonoControl.get_control().add_card_event(this);
+				use_card();
+				// MonoControl.get_control().add_card_event(this);
 				QueueFree();
 			}
 			return;
@@ -107,6 +112,10 @@ public partial class CardMove : Sprite2D{
 				state=0;
 			}
 		}
+	}
+
+	virtual protected void use_card(){
+
 	}
 
 	private void do_state(){
@@ -126,10 +135,9 @@ public partial class CardMove : Sprite2D{
 		}
 	}
 
-	private void check_sprite(){
-		if(score==-1)GetNode<Label>("Label").Text="START";
-		else GetNode<Label>("Label").Text=score.ToString();
+	virtual protected void check_sprite(){
 		Scale+=(n_scale-Scale)*0.1f;
+		
 	}
 
 	private void OnReturnTimerTimeout()

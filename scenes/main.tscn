@@ -1,11 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://r68vkg2gyh5v"]
+[gd_scene load_steps=11 format=3 uid="uid://r68vkg2gyh5v"]
 
-[ext_resource type="Texture2D" uid="uid://c634e8v6ydbx0" path="res://card.png" id="1_woc1f"]
-[ext_resource type="Script" path="res://scenes/Card.cs" id="2_6j44y"]
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_eimto"]
+[ext_resource type="PackedScene" uid="uid://beh4yyw8p54pc" path="res://scenes/card_move.tscn" id="2_pbhbu"]
+[ext_resource type="Script" path="res://scripts/CardWheel.cs" id="3_m7c4h"]
+[ext_resource type="Script" path="res://scripts/MouseInput.cs" id="4_53tod"]
+[ext_resource type="Script" path="res://scripts/MonoControl.cs" id="5_lw712"]
+[ext_resource type="Script" path="res://scripts/CardGenerator.cs" id="6_qp5ip"]
+[ext_resource type="PackedScene" uid="uid://bf7wns82x16m2" path="res://scenes/default_card.tscn" id="7_fs6r6"]
+[ext_resource type="PackedScene" uid="uid://c7yit4xpsimyo" path="res://scenes/multiply_two_card.tscn" id="8_wsg6r"]
+[ext_resource type="PackedScene" uid="uid://c31nea7c01yfp" path="res://scenes/start_card.tscn" id="9_arhsc"]
+[ext_resource type="PackedScene" uid="uid://om8i5a2rbexx" path="res://scenes/sum_card.tscn" id="10_am0k7"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_eimto")
+Card = ExtResource("2_pbhbu")
 
-[node name="Card" type="Sprite2D" parent="."]
-position = Vector2(632, 354)
-texture = ExtResource("1_woc1f")
-script = ExtResource("2_6j44y")
+[node name="CardWheel" type="Node2D" parent="."]
+script = ExtResource("3_m7c4h")
+center = Vector2(1440, 960)
+
+[node name="MouseInput" type="Node" parent="."]
+script = ExtResource("4_53tod")
+
+[node name="MonoControl" type="Node" parent="."]
+script = ExtResource("5_lw712")
+
+[node name="Label" type="Label" parent="MonoControl"]
+offset_right = 116.0
+offset_bottom = 57.0
+
+[node name="CardGenerator" type="Node" parent="."]
+script = ExtResource("6_qp5ip")
+card_scenes = {
+"Default": ExtResource("7_fs6r6"),
+"Multiply2": ExtResource("8_wsg6r"),
+"Start": ExtResource("9_arhsc"),
+"Sum": ExtResource("10_am0k7")
+}
+
+[node name="Description" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 37.0
+offset_right = 41.0
+offset_bottom = 60.0
