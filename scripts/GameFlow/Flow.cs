@@ -67,11 +67,11 @@ public class CardGameFlow:
 
     private FlowNode mCurNode = null;
 
-    public void NextNode(LevelManager n_level_manager)
+    public void NextNode(LevelManager n_level_manager,int n_card_level)
     {
         if(mCurNode is not null)
         {
-            mCurNode.OnNode(n_level_manager);//退出节点
+            mCurNode.OnNode(n_level_manager,n_card_level);//退出节点
             foreach (var flowNodeLine in mAllFlowNodeLine)//执行退出节点时的一些效果
                 flowNodeLine.OnExitNode(mCurNode.NodeName);
         }

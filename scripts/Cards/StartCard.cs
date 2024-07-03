@@ -5,6 +5,7 @@ using System.Diagnostics;
 public partial class StartCard : Card{
 
 	public StartCard(){
+		card_type_s="Start";
 		card_description="Start - 上划开始，下划退出";
 		is_use_in_level=false;
 		event_0=new CardEvent();

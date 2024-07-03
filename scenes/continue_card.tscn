@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmctb4ybbixq2"]
+
+[ext_resource type="Texture2D" uid="uid://b2qt25efl8ncc" path="res://imgs/continue_card.png" id="1_y45n0"]
+[ext_resource type="Script" path="res://scripts/Cards/ContinueCard.cs" id="2_75g0a"]
+
+[node name="ContinueCard" type="Sprite2D"]
+texture = ExtResource("1_y45n0")
+script = ExtResource("2_75g0a")

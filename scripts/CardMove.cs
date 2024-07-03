@@ -100,6 +100,7 @@ public partial class CardMove : Sprite2D{
 			if(n_scale.X<0.1f){
 				use_card();
 				// MonoControl.get_control().add_card_event(this);
+				Particles.get_particles().explode_stars(Position,10);
 				QueueFree();
 			}
 			return;

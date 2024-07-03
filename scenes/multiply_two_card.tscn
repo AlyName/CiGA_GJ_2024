@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7yit4xpsimyo"]
 
-[ext_resource type="Texture2D" uid="uid://c04fcd4nbliid" path="res://multiply_2_card.png" id="1_w14oy"]
+[ext_resource type="Texture2D" uid="uid://c04fcd4nbliid" path="res://imgs/multiply_2_card.png" id="1_w14oy"]
 [ext_resource type="Script" path="res://scripts/Cards/MultiplyTwoCard.cs" id="2_513yb"]
 
 [node name="MultiplyTwoCard" type="Sprite2D"]

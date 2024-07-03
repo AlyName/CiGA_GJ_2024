@@ -5,7 +5,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 public partial class CardWheel : Node2D{
-	public List<CardMove> cards=new List<CardMove>();
+	public static CardWheel instance;
+	public CardWheel(){
+		instance=this;
+	}
+	public List<Card> cards=new List<Card>();
+	public Stack<List<Tuple<string,int,int>>> stack_history_cards=new Stack<List<Tuple<string,int,int>>>();
 	[Export]
 	public float eta=120000f,tau=0.25f,circle_a=700f,circle_b=200f,sa=-0.0025f,a_angle=0.05f;
 	[Export]
@@ -17,13 +22,15 @@ public partial class CardWheel : Node2D{
 	[Export]
 	public float angle=0f,press_angle;
 
+	public bool is_fixed;
+	public int fixed_angle_index=0;
 	private Vector2 press_mouse_pos;
 	public override void _Ready(){
 		add_wait_num=0;delete_wait_num=0;
 		//TODO
 		foreach(Node node in GetParent().GetChildren()){
-			if(node is CardMove){
-				CardMove card=node as CardMove;
+			if(node is Card){
+				Card card=node as Card;
 				cards.Add(card);
 			}
 		}
@@ -35,9 +42,10 @@ public partial class CardWheel : Node2D{
 		adjust_angle();
 	}
 
-	public void add_card(int card_id,int pos){
+	public int add_card(int card_id,int pos){
 		add_wait[add_wait_num++]=card_id;
 		add_pos[add_wait_num-1]=pos;
+		return pos;
 	}
 
 	public int delete_card(int card_id){
@@ -54,8 +62,8 @@ public partial class CardWheel : Node2D{
 		for(int i=0;i<add_wait_num;i++){
 			// TODO
 			foreach(Node node in GetParent().GetChildren()){
-				if(node is CardMove){
-					CardMove card=node as CardMove;
+				if(node is Card){
+					Card card=node as Card;
 					if(card.card_id==add_wait[i]){
 						// Debug.WriteLine(i);
 						cards.Insert(add_pos[i],card);
@@ -112,6 +120,7 @@ public partial class CardWheel : Node2D{
 				cards[i].Modulate=new Color(0.5f,0.5f,0.5f,1)+new Color(0.25f,0.25f,0.25f,0)/card_num*cards[i].ZIndex;
 				cards[i].n_scale=new Vector2(0.75f,0.75f)+new Vector2(0.25f,0.25f)/card_num*cards[i].ZIndex;
 			}
+			cards[i].Modulate*=cards[i].n_color;
 		}
 
 	}
@@ -147,6 +156,13 @@ public partial class CardWheel : Node2D{
 					nj=(float)Math.Min(nj,Math.Abs(circle_angle[angle_min_index]-angle+2*Math.PI));
 					if(ni<nj)angle_min_index=i;
 				}
+				if(is_fixed){
+					if(angle_min_index==fixed_angle_index){
+						is_fixed=false;
+					}else{
+						angle_min_index=fixed_angle_index;
+					}
+				}
 				float angle_min=circle_angle[angle_min_index];
 				angle+=(angle_min-angle)*a_angle;
 			}
@@ -155,8 +171,47 @@ public partial class CardWheel : Node2D{
 
 	}
 
+	public void rotate_to(int fp){
+		int card_num=cards.Count;
+		is_fixed=true;
+		fixed_angle_index=fp;
+	}
+
+	public void clear_cards(){
+		List<Tuple<string,int,int>> now_cards=new List<Tuple<string,int,int>>();
+		for(int i=0;i<cards.Count;i++){
+		    now_cards.Add(new Tuple<string,int,int>(cards[i].card_type_s,cards[i].card_level,cards[i].score));
+		}
+		stack_history_cards.Push(now_cards);
+		for(int i=0;i<cards.Count;i++){
+			cards[i].QueueFree();
+		}
+		cards.Clear();
+	}
+
+	public bool return_cards(){
+	    if(stack_history_cards.Count==0)return false;
+		for(int i=0;i<cards.Count;i++){
+			cards[i].QueueFree();
+		}
+		cards.Clear();
+		List<Tuple<string,int,int>> now_cards=stack_history_cards.Pop();
+		for(int i=0;i<now_cards.Count;i++){
+		    CardGenerator.get_generator().generate_card(now_cards[i].Item1,now_cards[i].Item2,now_cards[i].Item3);
+		}
+		return true;
+	}
+
+	public void clear_stack(){
+		while(stack_history_cards.Count!=0)stack_history_cards.Pop();
+	}
+
 	public int left_card(){
-		return cards.Count;
+		return cards.Count+add_wait_num;
+	}
+
+	public static CardWheel get_wheel(){
+		return instance;
 	}
 
 }
