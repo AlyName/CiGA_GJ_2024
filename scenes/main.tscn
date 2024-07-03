@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://r68vkg2gyh5v"]
+[gd_scene load_steps=6 format=3 uid="uid://r68vkg2gyh5v"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_4phu8"]
 [ext_resource type="Script" path="res://scripts/CardWheel.cs" id="2_y1ax8"]
-[ext_resource type="PackedScene" uid="uid://tcvnvb3fknuf" path="res://scenes/tableLoad.tscn" id="3_fq0ok"]
 [ext_resource type="PackedScene" uid="uid://beh4yyw8p54pc" path="res://scenes/card_move.tscn" id="3_vfrs1"]
 [ext_resource type="Script" path="res://scripts/MouseInput.cs" id="4_gfldf"]
 [ext_resource type="Script" path="res://scripts/MonoControl.cs" id="5_ysgjp"]
@@ -10,8 +9,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4phu8")
 Card = ExtResource("3_vfrs1")
-
-[node name="tableLoad" parent="." instance=ExtResource("3_fq0ok")]
 
 [node name="CardWheel" type="Node2D" parent="."]
 script = ExtResource("2_y1ax8")
