@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Main : Node2D{
 	[Export]
@@ -8,12 +9,25 @@ public partial class Main : Node2D{
 	[Export]
 	public PackedScene PackedStar;
 
-
+	public string[] card_type_id_s=new string[11]{
+			"Default",
+			"Sum",
+			"Multiply2",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"Duplicate",
+			"",
+			""
+	};
 	public static Main instance;
 
-	public int overall_id;
+	
 
 	public Main(){
+		Debug.WriteLine("Start");
 		instance=this;
 	}
 	// Called when the node enters the scene tree for the first time.
@@ -26,7 +40,7 @@ public partial class Main : Node2D{
 		// 	AddChild(card);
 		// 	GetNode<CardWheel>("CardWheel").add_card(i,0);
 		// }
-		generate_card(-1);
+		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Start);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,14 +48,14 @@ public partial class Main : Node2D{
 		
 	}
 
-	public void generate_card(int card_score){
-		var card = Card.Instantiate() as CardMove;
-		card.Position = new Vector2(0,0);
-		card.card_id=++overall_id;
-		card.score=card_score;
-		AddChild(card);
-		GetNode<CardWheel>("CardWheel").add_card(card.card_id,0);
-	}
+	// public void generate_card(int card_score){
+		// var card = Card.Instantiate() as DefaultCard;
+		// card.Position = new Vector2(0,0);
+		// card.card_id=++overall_id;
+		// card.score=card_score;
+		// AddChild(card);
+		// GetNode<CardWheel>("CardWheel").add_card(card.card_id,0);
+	// }
 
 	public static Main get_main(){
 		return instance;
