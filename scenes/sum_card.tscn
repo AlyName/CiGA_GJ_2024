@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://om8i5a2rbexx"]
 
-[ext_resource type="Texture2D" uid="uid://3fw1mrh2jiuc" path="res://sum_card.png" id="1_ho256"]
+[ext_resource type="Texture2D" uid="uid://3fw1mrh2jiuc" path="res://imgs/sum_card.png" id="1_u32q6"]
 [ext_resource type="Script" path="res://scripts/Cards/SumCard.cs" id="2_kt256"]
 
 [node name="SumCard" type="Sprite2D"]
-texture = ExtResource("1_ho256")
+texture = ExtResource("1_u32q6")
 script = ExtResource("2_kt256")

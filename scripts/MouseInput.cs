@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class MouseInput : Node{
 
@@ -31,7 +32,9 @@ public partial class MouseInput : Node{
 		if (@event is InputEventMouseButton eventMouseButton){
 			if (eventMouseButton.ButtonIndex == MouseButton.Left){
 				if(eventMouseButton.Pressed){
-					n_press=true;
+					if(!check_ui_pressed()){
+						n_press=true;
+					}
 				}else{
 					n_press=false;
 				}
@@ -42,6 +45,18 @@ public partial class MouseInput : Node{
 				// }
 			}
 		}
+	}
+
+	bool check_ui_pressed(){
+		Control bottom_b=UI.get_ui().get_bottom_b();
+		if(bottom_b.GetGlobalRect().HasPoint(mouse_pos)){
+			CardEvent nevent=new CardEvent();
+			nevent.event_type=CardEvent.Type.Settings;
+			MonoControl.get_control().add_card_event(nevent);
+			Debug.WriteLine("Settings");
+			return true;
+		}
+		return false;
 	}
 
 	private void calc_mouse(float delta){

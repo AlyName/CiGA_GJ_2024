@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Main : Node2D{
 	[Export]
@@ -8,12 +9,25 @@ public partial class Main : Node2D{
 	[Export]
 	public PackedScene PackedStar;
 
-
+	public string[] card_type_id_s=new string[11]{
+			"Default",
+			"Sum",
+			"Multiply2",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"Duplicate",
+			"",
+			""
+	};
 	public static Main instance;
 
 	
 
 	public Main(){
+		Debug.WriteLine("Start");
 		instance=this;
 	}
 	// Called when the node enters the scene tree for the first time.
@@ -26,7 +40,7 @@ public partial class Main : Node2D{
 		// 	AddChild(card);
 		// 	GetNode<CardWheel>("CardWheel").add_card(i,0);
 		// }
-		CardGenerator.get_generator().generate_card("Start");
+		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Start);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
