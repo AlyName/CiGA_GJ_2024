@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tcvnvb3fknuf"]
+
+[ext_resource type="Script" path="res://scripts/TableLoader/TableLoader.cs" id="1_skeqq"]
+
+[node name="tableLoader" type="Node2D"]
+script = ExtResource("1_skeqq")

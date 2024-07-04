@@ -14,17 +14,23 @@ namespace cfg
 {
 public partial class Tables
 {
-    public item.TbItem TbItem {get; }
+    public TbCardBase TbCardBase {get; }
+    public TbCardRatio TbCardRatio {get; }
+    public TbCardEffect TbCardEffect {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
-        TbItem = new item.TbItem(loader("item_tbitem"));
+        TbCardBase = new TbCardBase(loader("tbcardbase"));
+        TbCardRatio = new TbCardRatio(loader("tbcardratio"));
+        TbCardEffect = new TbCardEffect(loader("tbcardeffect"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        TbItem.ResolveRef(this);
+        TbCardBase.ResolveRef(this);
+        TbCardRatio.ResolveRef(this);
+        TbCardEffect.ResolveRef(this);
     }
 }
 
