@@ -25,17 +25,19 @@ public partial class UI : VBoxContainer{
 
 	void set_all_position(){
 		Size=GetViewport().GetVisibleRect().Size;
+		Position=GetViewport().GetVisibleRect().Position;
 		CardWheel.get_wheel().center=2*GetNode<Control>("CardDeck").GetRect().Position+GetNode<Control>("CardDeck").GetRect().Size;
 		label_a_n_num=smooth_change_number(label_a_n_num,label_a_goal_num);
 		label_b_n_num=smooth_change_number(label_b_n_num,label_b_goal_num);
-		label_a.Text="GOAL "+label_a_n_num.ToString().PadLeft(6,'0');
-		label_b.Text="NOW "+label_b_n_num.ToString().PadLeft(6,'0');
+		label_a.Text="GOAL "+label_a_n_num.ToString().PadLeft(8,'0');
+		label_b.Text="NOW "+label_b_n_num.ToString().PadLeft(8,'0');
 		// TODO ...
 	}
 
 	int smooth_change_number(int n_num,int goal_num){
-		if(Math.Abs(goal_num-n_num)>20){
-			return n_num+(goal_num-n_num)/10;
+		if(goal_num<0)goal_num=0;
+		if(Math.Abs(goal_num-n_num)>10){
+			return n_num+(goal_num-n_num)/5;
 		}else{
 			if(goal_num>n_num){
 			    return n_num+1;
@@ -53,6 +55,16 @@ public partial class UI : VBoxContainer{
 
 	public void set_label_b_number(int nn){
 		label_b_goal_num=nn;
+	}
+
+	public void label_a_boom(){
+		Vector2 pos=GetNode<Panel>("Scores/PanelA").Position+GetNode<Panel>("Scores/PanelA").GetRect().Size/2;
+		Particles.get_particles().explode_ring(pos);
+	}
+
+	public void label_b_boom(){
+	    Vector2 pos=GetNode<Panel>("Scores/PanelB").Position+GetNode<Panel>("Scores/PanelB").GetRect().Size/2;
+		Particles.get_particles().explode_ring(pos);
 	}
 
 	public void set_label_mid_numbers(int na,int nb){

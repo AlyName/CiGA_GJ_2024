@@ -12,7 +12,7 @@ public partial class CardMove : Sprite2D{
 	[Export]
 	public float _returnSpeed = 5f;
 	[Export]
-	public float YBound=100f;
+	public float upper_y_bound=100f,lower_y_bound=300f;
 	[Export]
 	public float limit_r=5f,shake_r=4f;
 	private float upper_y,lower_y;
@@ -37,8 +37,7 @@ public partial class CardMove : Sprite2D{
 		_returnTimer.Connect("timeout", new Callable(this, nameof(OnReturnTimerTimeout)));
 
 		viewrect=GetViewport().GetVisibleRect();
-		upper_y = viewrect.Position.Y + viewrect.Size.Y-YBound;
-		lower_y = viewrect.Position.Y+YBound;
+		
 
 		card_label=new Label();
 		card_label.Position=new Vector2(0,20);
@@ -100,7 +99,7 @@ public partial class CardMove : Sprite2D{
 			if(n_scale.X<0.1f){
 				use_card();
 				// MonoControl.get_control().add_card_event(this);
-				Particles.get_particles().explode_stars(Position,10);
+				
 				QueueFree();
 			}
 			return;
@@ -125,12 +124,14 @@ public partial class CardMove : Sprite2D{
 			float top_y=viewrect.Position.Y+viewrect.Size.Y,bottom_y=viewrect.Position.Y;
 			float mouse_y=MouseInput.get_mouse_input().mouse_pos.Y;
 			Position=MouseInput.get_mouse_input().mouse_pos;
+			upper_y = viewrect.Position.Y + viewrect.Size.Y-upper_y_bound;
+			lower_y = viewrect.Position.Y+lower_y_bound;
 			if(Position.Y>upper_y-shake_r||Position.Y<lower_y+shake_r){
 				Vector2 random_shake=new Vector2(GD.Randf()*shake_r*2-shake_r,GD.Randf()*shake_r*2-shake_r);
 				Position=Position+random_shake;
 				n_scale=new Vector2(1.2f,1.2f);
 			}else{
-				n_scale=new Vector2(1,1);
+				n_scale=new Vector2(1f,1f);
 			}
 			Modulate=new Color(1,1,1,1);
 		}
