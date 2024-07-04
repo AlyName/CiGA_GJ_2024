@@ -1,11 +1,11 @@
 [gd_scene load_steps=36 format=3 uid="uid://duqam6ffexoc8"]
 
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_2eimh"]
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="2_1fdf8"]
-[ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="3_nvlv6"]
-[ext_resource type="Texture2D" uid="uid://ovw18l4dc1fv" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="4_0gb2t"]
-[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="5_5twkj"]
-[ext_resource type="Texture2D" uid="uid://dc67f1jdiu0tu" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb2.png" id="6_isgq0"]
+[ext_resource type="Script" path="res://Addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_2eimh"]
+[ext_resource type="Script" path="res://Addons/BurstParticles2D/BurstParticles2D.gd" id="2_1fdf8"]
+[ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="3_nvlv6"]
+[ext_resource type="Texture2D" uid="uid://ovw18l4dc1fv" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="4_0gb2t"]
+[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="5_5twkj"]
+[ext_resource type="Texture2D" uid="uid://dc67f1jdiu0tu" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb2.png" id="6_isgq0"]
 
 [sub_resource type="Gradient" id="Gradient_bclkm"]
 interpolation_mode = 2

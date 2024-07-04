@@ -1,9 +1,9 @@
 [gd_scene load_steps=32 format=3 uid="uid://drwp60x7q7wtx"]
 
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_xgldk"]
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="3_wh1l3"]
-[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="4_rwjrl"]
-[ext_resource type="Texture2D" uid="uid://ovw18l4dc1fv" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="5_l8jsc"]
+[ext_resource type="Script" path="res://Addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_xgldk"]
+[ext_resource type="Script" path="res://Addons/BurstParticles2D/BurstParticles2D.gd" id="3_wh1l3"]
+[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="4_rwjrl"]
+[ext_resource type="Texture2D" uid="uid://ovw18l4dc1fv" path="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="5_l8jsc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ej7wq"]
 
@@ -124,6 +124,7 @@ script = ExtResource("1_xgldk")
 metadata/_edit_group_ = true
 
 [node name="Ring" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.12549)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
@@ -173,6 +174,7 @@ y_scale_curve = SubResource("Curve_k6dkk")
 color_offset_curve = SubResource("Curve_8y1cm")
 
 [node name="Cross" type="Node2D" parent="."]
+visible = false
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
 position = Vector2(0.000976563, -0.00012207)
@@ -196,6 +198,7 @@ y_scale_curve = SubResource("Curve_m8v4h")
 color_offset_curve = SubResource("Curve_8kxii")
 
 [node name="Ring2" type="Node2D" parent="."]
+visible = false
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
 position = Vector2(0.000976563, 0.00012207)
@@ -217,6 +220,7 @@ y_scale_curve = SubResource("Curve_u2ur6")
 color_offset_curve = SubResource("Curve_jjlod")
 
 [node name="Cross2" type="Node2D" parent="."]
+visible = false
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
 position = Vector2(0.000976563, -0.00012207)
@@ -238,6 +242,7 @@ y_scale_curve = SubResource("Curve_m8v4h")
 color_offset_curve = SubResource("Curve_8kxii")
 
 [node name="Orbs2" type="Node2D" parent="."]
+visible = false
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
 position = Vector2(0.000488281, 0)
@@ -264,6 +269,7 @@ y_scale_curve = SubResource("Curve_k6dkk")
 color_offset_curve = SubResource("Curve_8y1cm")
 
 [node name="Orbs3" type="Node2D" parent="."]
+visible = false
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_ej7wq")
 position = Vector2(0.000488281, 0)
