@@ -1,0 +1,134 @@
+[
+  {
+    "card_type_s": "Start",
+    "is_use_in_level": false,
+    "card_description": "上划开始，下划退出",
+    "card_type_id": -1,
+    "event_0_type": "GameStart",
+    "event_1_type": "GameEnd",
+    "effect_1": "",
+    "base_score": 0,
+    "texture": "start_card.png"
+  },
+  {
+    "card_type_s": "Setting",
+    "is_use_in_level": false,
+    "card_description": "上划设置，下划帮助，没有帮助，只能退出",
+    "card_type_id": -1,
+    "event_0_type": "Settings",
+    "event_1_type": "GameEnd",
+    "effect_1": "",
+    "base_score": 0,
+    "texture": "setting_card.png"
+  },
+  {
+    "card_type_s": "Continue",
+    "is_use_in_level": false,
+    "card_description": "继续/返回",
+    "card_type_id": -1,
+    "event_0_type": "Continue",
+    "event_1_type": "GameEnd",
+    "effect_1": "",
+    "base_score": 0,
+    "texture": "continue_card.png"
+  },
+  {
+    "card_type_s": "VA",
+    "is_use_in_level": false,
+    "card_description": "上划视频，下划音频，但啥也没有，所以都是退出",
+    "card_type_id": -1,
+    "event_0_type": "GameEnd",
+    "event_1_type": "GameEnd",
+    "effect_1": "",
+    "base_score": 0,
+    "texture": "va_card.png"
+  },
+  {
+    "card_type_s": "NextLevel",
+    "is_use_in_level": false,
+    "card_description": "下一关/回到初始页面",
+    "card_type_id": -1,
+    "event_0_type": "NextLevel",
+    "event_1_type": "GameEnd",
+    "effect_1": "",
+    "base_score": 0,
+    "texture": "next_card.png"
+  },
+  {
+    "card_type_s": "Default",
+    "is_use_in_level": true,
+    "card_description": "Default - 无特殊效果",
+    "card_type_id": 0,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "None",
+    "base_score": 1,
+    "texture": "card.png"
+  },
+  {
+    "card_type_s": "Sum",
+    "is_use_in_level": true,
+    "card_description": "Sum - 下回合多抽牌",
+    "card_type_id": 7,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "RoundCardBonus",
+    "base_score": 4,
+    "texture": "sum_card.png"
+  },
+  {
+    "card_type_s": "Multiply",
+    "is_use_in_level": true,
+    "card_description": "Multiply - 下张牌得分翻若干倍",
+    "card_type_id": 5,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "Multiply",
+    "base_score": 4,
+    "texture": "multiply_2_card.png"
+  },
+  {
+    "card_type_s": "Duplicate",
+    "is_use_in_level": true,
+    "card_description": "Duplicate - 复制下一张牌",
+    "card_type_id": 11,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "Duplicate",
+    "base_score": 10,
+    "texture": "duplicate_card.png"
+  },
+  {
+    "card_type_s": "ThreeRow",
+    "is_use_in_level": true,
+    "card_description": "ThreeRow - 如果本轮某时连续使用的三张牌效果一样（无论品质），本轮最终得分翻倍",
+    "card_type_id": 1,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "RoundThreeRow",
+    "base_score": 2,
+    "texture": "three_row_card.png"
+  },
+  {
+    "card_type_s": "LastBonus",
+    "is_use_in_level": true,
+    "card_description": "LastBonus - 本轮打出的最后一张牌加分",
+    "card_type_id": 10,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "LastCardBonus",
+    "base_score": 10,
+    "texture": "last_bonus_card.png"
+  },
+  {
+    "card_type_s": "RareBonus",
+    "is_use_in_level": true,
+    "card_description": "RareBonus - 提升下一回合抽到稀有牌的概率",
+    "card_type_id": 2,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "RoundRareBonus",
+    "base_score": 2,
+    "texture": "rare_bonus_card.png"
+  }
+]

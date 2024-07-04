@@ -9,6 +9,8 @@ public partial class Particles : Node2D{
 	public ParticleProcessMaterial explode_material;
 	[Export]
 	public Texture2D explode_star;
+	[Export]
+	public PackedScene orb_scene,ring_scene;
 	public override void _Ready(){
 		
 	}
@@ -24,6 +26,35 @@ public partial class Particles : Node2D{
 		particles.Amount = amount;
 		particles.Lifetime = 5.0f;
 		// particles.Emitting = true;
+	}
+
+	public void explode_orbs(Vector2 pos,int amount){
+		var orb = orb_scene.Instantiate();
+		orb.Set("position",pos);
+		orb.Set("num_particles",amount);
+		orb.Set("repeat",false);
+		AddChild(orb);
+	}
+
+	public void explode_ring(Vector2 pos){
+		var ring = ring_scene.Instantiate();
+		ring.Set("position",pos);
+		AddChild(ring);
+	}
+
+	public void card_explode(Vector2 pos,int score){
+		if(score<=5){
+			explode_orbs(pos,16);
+		}else if(score<=50){
+			explode_orbs(pos,64);
+			Camera.get_camera().shake(3f,5f);
+		}else if(score<=250){
+			explode_orbs(pos,256);
+			Camera.get_camera().shake(5f,10f);
+		}else{
+			explode_orbs(pos,512);
+			Camera.get_camera().shake(10f,20f);
+		}
 	}
 	public static Particles get_particles(){
 		return instance;
