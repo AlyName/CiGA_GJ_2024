@@ -12,23 +12,46 @@ public partial class Card : CardMove{
     protected bool is_effect_0_add_score=true;
     protected bool is_use_in_level=true;
     protected CardEvent event_0=null,event_1=null;
+    public EffectManager.Type effect_0=EffectManager.Type.None,effect_1=EffectManager.Type.None;
+
+    public Card(){
+
+    }
+    public Card(cfg.Item n_card_item){
+        card_type_s=n_card_item.CardTypeS;
+        card_description=n_card_item.CardDescription;
+        card_type=n_card_item.CardTypeId;
+        is_use_in_level=n_card_item.IsUseInLevel;
+        score=n_card_item.BaseScore;
+        if(n_card_item.Event0Type!=""){
+            event_0=new CardEvent((CardEvent.Type)Enum.Parse(typeof(CardEvent.Type),n_card_item.Event0Type));
+        }
+        if(n_card_item.Event1Type!=""){
+            event_1=new CardEvent((CardEvent.Type)Enum.Parse(typeof(CardEvent.Type),n_card_item.Event1Type));
+        }
+        if(n_card_item.Effect1!=""){
+            effect_1=(EffectManager.Type)Enum.Parse(typeof(EffectManager.Type),n_card_item.Effect1);
+        }
+        Texture=ResourceLoader.Load<Texture2D>("res://imgs/"+n_card_item.Texture);
+    }
     protected override void use_card(){
         CardEvent now_event=new CardEvent();
         if(is_use_in_level){
             now_event.card_level=card_level;
             now_event.card_type=card_type;
             now_event.card_type_s=card_type_s;
+            now_event.score=score;
             if(is_use==0){
                 if(is_effect_0_add_score){
                     now_event.event_type=CardEvent.Type.AddScore;
-                    now_event.score=score;
+                    
                 }else{
                     now_event.event_type=CardEvent.Type.Effect;
-                    now_event.action=new Action<LevelManager,int>(effect_0);
+                    now_event.action=new Action<LevelManager,int>(generate_effect_action(effect_0));
                 }
             }else{
                 now_event.event_type=CardEvent.Type.Effect;
-                now_event.action=new Action<LevelManager,int>(effect_1);
+                now_event.action=new Action<LevelManager,int>(generate_effect_action(effect_1));
             }
             
         }else{
@@ -38,7 +61,28 @@ public partial class Card : CardMove{
                 now_event=event_1;
             }
         }
+        now_event.pos=Position;
         MonoControl.get_control().add_card_event(now_event);
+    }
+
+    Action<LevelManager,int> generate_effect_action(EffectManager.Type n_type){
+        if(n_type==EffectManager.Type.None){
+            return new Action<LevelManager, int>(
+                    (LevelManager n_level_manager,int n_card_level)=>{
+                        return;
+                    }
+            );
+        }
+        return new Action<LevelManager,int>(
+                (LevelManager n_level_manager,int n_card_level)=>{
+                    n_level_manager.effect_manager.effect_queue.Add(
+                            new Tuple<EffectManager.Type,int>(
+                                n_type,
+                                n_card_level
+                            )
+                    );
+                }
+        );
     }
     protected override void check_sprite(){
         base.check_sprite();
@@ -56,11 +100,5 @@ public partial class Card : CardMove{
             // TODO
 			UI.get_ui().set_description(card_description);
 		}
-    }
-    virtual protected void effect_0(LevelManager n_levelmanager,int card_level){
-
-    }
-    virtual protected void effect_1(LevelManager n_levelmanager,int card_level){
-
     }
 }

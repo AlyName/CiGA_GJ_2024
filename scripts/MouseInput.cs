@@ -8,6 +8,7 @@ public partial class MouseInput : Node{
 	public string mouse_on_node_name,last_on_node_name;
 	public Vector2 mouse_pos,mouse_v;
 	public bool is_mouse_press,n_press;
+	public bool is_abled=true;
 
 	public float time_until_last_press=0;
 
@@ -24,11 +25,16 @@ public partial class MouseInput : Node{
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
-		calc_mouse((float)delta);
-		calc_mouse_on_node();
+		if(is_abled){
+			calc_mouse((float)delta);
+			calc_mouse_on_node();
+		}else{
+			reset_mouse();
+		}
 	}
 
 	public override void _Input(InputEvent @event){
+		if(!is_abled)return;
 		if (@event is InputEventMouseButton eventMouseButton){
 			if (eventMouseButton.ButtonIndex == MouseButton.Left){
 				if(eventMouseButton.Pressed){
@@ -92,6 +98,14 @@ public partial class MouseInput : Node{
 		if(is_mouse_press){
 			last_on_node_name=mouse_on_node_name;
 		}
+	}
+
+	void reset_mouse(){
+		mouse_on_node_name="";
+		last_on_node_name="";
+		is_mouse_press=false;
+		time_until_last_press=0;
+		n_press=false;
 	}
 
 	public static MouseInput get_mouse_input(){

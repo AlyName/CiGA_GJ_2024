@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 public partial class Main : Node2D{
 	[Export]
@@ -8,20 +9,6 @@ public partial class Main : Node2D{
 
 	[Export]
 	public PackedScene PackedStar;
-
-	public string[] card_type_id_s=new string[11]{
-			"Default",
-			"Sum",
-			"Multiply2",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"Duplicate",
-			"",
-			""
-	};
 	public static Main instance;
 
 	
@@ -56,7 +43,18 @@ public partial class Main : Node2D{
 		// AddChild(card);
 		// GetNode<CardWheel>("CardWheel").add_card(card.card_id,0);
 	// }
-
+	public async Task wait_time(float nt){
+		await ToSignal(GetTree().CreateTimer(nt), SceneTreeTimer.SignalName.Timeout);
+	}
+	public async Task block_wait_time(float nt){
+		MouseInput.get_mouse_input().is_abled=false;
+		await wait_time(nt);
+		MouseInput.get_mouse_input().is_abled=true;
+	}
+	public async Task wait_time_add_event(float nt,CardEvent ne){
+		await wait_time(nt);
+		MonoControl.get_control().add_card_event(ne);
+	}
 	public static Main get_main(){
 		return instance;
 	}
