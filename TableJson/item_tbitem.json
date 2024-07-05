@@ -130,5 +130,16 @@
     "effect_1": "RoundRareBonus",
     "base_score": 2,
     "texture": "rare_bonus_card.png"
+  },
+  {
+    "card_type_s": "TimeCardBonus",
+    "is_use_in_level": true,
+    "card_description": "time card bonus",
+    "card_type_id": 9,
+    "event_0_type": "",
+    "event_1_type": "",
+    "effect_1": "TimeCardBonus",
+    "base_score": 5,
+    "texture": "time_bonus_card.png"
   }
 ]
