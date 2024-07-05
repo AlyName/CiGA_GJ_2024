@@ -43,10 +43,22 @@ public partial class LevelManager{
             FlowNode nnode=new FlowNode("effect test",n_action);
             flow.PushNode(nnode);
             flow.NextNode(this,now_event.card_level);
+            handle_special_event(now_event);
         }
         // Debug.WriteLine("check");
         check_round_end();
         return true;
+    }
+
+    public void handle_special_event(CardEvent now_event){
+        if(now_event.card_type_s=="TimeCardBonus"){
+            time_bonus_event();
+        }
+    }
+
+    public async Task time_bonus_event(){
+        await Main.get_main().wait_time(3f);
+        effect_manager.remove_a_time_effect();
     }
 
     async Task check_round_end(){

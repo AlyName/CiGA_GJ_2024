@@ -217,7 +217,7 @@ public partial class MonoControl : Node{
 			// int score=(int)Math.Pow(2,card_level);
 			nf=GD.Randf();
 			if(nf<0.1){
-				CardGenerator.get_generator().generate_card("RareBonus",card_level);
+				CardGenerator.get_generator().generate_card("TimeCardBonus",card_level);
 			}else if(nf<0.2){
 				CardGenerator.get_generator().generate_card("Multiply",card_level);
 			}else if(nf<0.7){

@@ -12,7 +12,7 @@ public partial class CardMove : Sprite2D{
 	[Export]
 	public float _returnSpeed = 5f;
 	[Export]
-	public float upper_y_bound=100f,lower_y_bound=300f;
+	public float upper_y_bound=0.85f,lower_y_bound=0.4f;
 	[Export]
 	public float limit_r=5f,shake_r=4f;
 	private float upper_y,lower_y;
@@ -72,7 +72,7 @@ public partial class CardMove : Sprite2D{
 				_initialPosition = Position;
 				drag_original_y=_initialPosition.Y;
 				//TODO
-				leave_place=GetNode<CardWheel>("../CardWheel").delete_card(card_id);
+				leave_place=CardWheel.get_wheel().delete_card(card_id);
 				ZIndex=100;
 				state=1;
 			}
@@ -88,7 +88,7 @@ public partial class CardMove : Sprite2D{
 					// _returnTimer.Start();
 					// state=3;
 					// TODO
-					GetNode<CardWheel>("../CardWheel").add_card(card_id,leave_place);
+					CardWheel.get_wheel().add_card(card_id,leave_place);
 					state=0;
 				}
 			}
@@ -124,8 +124,8 @@ public partial class CardMove : Sprite2D{
 			float top_y=viewrect.Position.Y+viewrect.Size.Y,bottom_y=viewrect.Position.Y;
 			float mouse_y=MouseInput.get_mouse_input().mouse_pos.Y;
 			Position=MouseInput.get_mouse_input().mouse_pos;
-			upper_y = viewrect.Position.Y + viewrect.Size.Y-upper_y_bound;
-			lower_y = viewrect.Position.Y+lower_y_bound;
+			upper_y = viewrect.Position.Y + viewrect.Size.Y*upper_y_bound;
+			lower_y = viewrect.Position.Y+viewrect.Size.Y*lower_y_bound;
 			if(Position.Y>upper_y-shake_r||Position.Y<lower_y+shake_r){
 				Vector2 random_shake=new Vector2(GD.Randf()*shake_r*2-shake_r,GD.Randf()*shake_r*2-shake_r);
 				Position=Position+random_shake;

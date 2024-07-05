@@ -12,7 +12,8 @@ public partial class EffectManager{
         RoundRareBonus,
         Duplicate,
         RoundThreeRow,
-        LastCardBonus
+        LastCardBonus,
+        TimeCardBonus,
 	}
     public List<Tuple<Type,int>> effect_queue=new List<Tuple<Type, int>>();
     string last_card_type_s;
@@ -37,7 +38,9 @@ public partial class EffectManager{
         for(int i=0;i<effect_queue.Count;i++){
             if(can_apply(n_card_event,cards,effect_queue[i])){
                 apply_single_effect(n_card_event,effect_queue[i]);
-                remove_index.Add(i);
+                if(should_delete(effect_queue[i])){
+                    remove_index.Add(i);
+                }
             }
         }
         for(int i=0;i<remove_index.Count;i++){
@@ -73,6 +76,8 @@ public partial class EffectManager{
             }else{
                 return false;
             }
+        }else if(n_effect.Item1==Type.TimeCardBonus){
+            return true;
         }
         return false;
     }
@@ -89,6 +94,9 @@ public partial class EffectManager{
         }else if(n_effect.Item1==Type.LastCardBonus){
             int[] n4=new int[4]{10,15,25,40};
             n_card_event.score+=n4[n_effect.Item2];
+        }else if(n_effect.Item1==Type.TimeCardBonus){
+            int[] n4=new int[4]{3,4,5,6};
+            n_card_event.score+=n4[n_effect.Item2];
         }
     }
 
@@ -101,5 +109,25 @@ public partial class EffectManager{
             }
         }
         return round_score;
+    }
+
+    bool should_delete(Tuple<Type,int> n_effect){
+        if(n_effect.Item1==Type.TimeCardBonus){
+            return false;
+        }
+        return true;
+    }
+
+    public void remove_a_time_effect(){
+        List<int> remove_index=new List<int>();
+        for(int i=0;i<effect_queue.Count;i++){
+            if(effect_queue[i].Item1==Type.TimeCardBonus){
+                remove_index.Add(i);
+                break;
+            }
+        }
+        for(int i=0;i<remove_index.Count;i++){
+            effect_queue.RemoveAt(remove_index[i]-i);
+        }
     }
 }

@@ -11,7 +11,7 @@ public partial class Main : Node2D{
 	public PackedScene PackedStar;
 	public static Main instance;
 
-	
+	public float main_clock=0;
 
 	public Main(){
 		Debug.WriteLine("Start");
@@ -19,6 +19,7 @@ public partial class Main : Node2D{
 	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
+		main_clock=0;
 		// for(int i=1;i<=10;i++){
 
 		// 	var card = Card.Instantiate() as CardMove;
@@ -32,7 +33,7 @@ public partial class Main : Node2D{
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
-		
+		main_clock+=(float)delta;
 	}
 
 	// public void generate_card(int card_score){
