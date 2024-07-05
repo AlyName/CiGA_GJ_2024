@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca1dygx0msjh8"]
-
-[ext_resource type="Texture2D" uid="uid://rgpnlphbl5xv" path="res://imgs/duplicate_card.png" id="1_ff5dj"]
-[ext_resource type="Script" path="res://scripts/Cards/DuplicateCard.cs" id="2_d0wh4"]
-
-[node name="DuplicateCard" type="Sprite2D"]
-texture = ExtResource("1_ff5dj")
-script = ExtResource("2_d0wh4")

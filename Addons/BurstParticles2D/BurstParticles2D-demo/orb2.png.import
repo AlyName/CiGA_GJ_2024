@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2lceccxwhwet"
-path="res://.godot/imported/ring.png-c84d5344ea2a41655078d10375aa9ec1.ctex"
+uid="uid://dc67f1jdiu0tu"
+path="res://.godot/imported/orb2.png-54849f562d18d50c6443e765ed03c37d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BurstParticles2D/BurstParticles2D-demo/ring.png"
-dest_files=["res://.godot/imported/ring.png-c84d5344ea2a41655078d10375aa9ec1.ctex"]
+source_file="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb2.png"
+dest_files=["res://.godot/imported/orb2.png-54849f562d18d50c6443e765ed03c37d.ctex"]
 
 [params]
 

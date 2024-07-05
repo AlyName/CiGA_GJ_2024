@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ovw18l4dc1fv"
-path="res://.godot/imported/orb.png-ce209f3634c7f03f0e0cc7e96ccae097.ctex"
+uid="uid://dpbi5rmef3xq3"
+path="res://.godot/imported/icon_group.svg-46b376cb2fc1b1587a59569897a73e32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BurstParticles2D/BurstParticles2D-demo/orb.png"
-dest_files=["res://.godot/imported/orb.png-ce209f3634c7f03f0e0cc7e96ccae097.ctex"]
+source_file="res://Addons/BurstParticles2D/icon_group.svg"
+dest_files=["res://.godot/imported/icon_group.svg-46b376cb2fc1b1587a59569897a73e32.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

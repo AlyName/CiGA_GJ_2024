@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c31nea7c01yfp"]
-
-[ext_resource type="Script" path="res://scripts/Cards/StartCard.cs" id="1_aobsy"]
-[ext_resource type="Texture2D" uid="uid://davrefs0xfah5" path="res://imgs/start_card.png" id="1_wyn6l"]
-
-[node name="StartCard" type="Sprite2D"]
-texture = ExtResource("1_wyn6l")
-script = ExtResource("1_aobsy")

@@ -1,7 +1,1 @@
-# CiGA_GJ_2024
-
-* 编辑器版本：Godot4.1.Stable
-
-__导出时请按照如下设置资源文件，以免导出后数据读取失败__
-
-![image](导出注意！.png)
+# CiGA_GJ_2024 Godot4.1.Stable

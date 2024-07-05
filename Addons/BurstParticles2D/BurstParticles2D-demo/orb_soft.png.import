@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c04fcd4nbliid"
-path="res://.godot/imported/multiply_2_card.png-f9c419de345309fe4fc7f54131885c7f.ctex"
+uid="uid://vwe34itxqa37"
+path="res://.godot/imported/orb_soft.png-844d14b273e5c90b92534df82c276f63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://multiply_2_card.png"
-dest_files=["res://.godot/imported/multiply_2_card.png-f9c419de345309fe4fc7f54131885c7f.ctex"]
+source_file="res://Addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png"
+dest_files=["res://.godot/imported/orb_soft.png-844d14b273e5c90b92534df82c276f63.ctex"]
 
 [params]
 

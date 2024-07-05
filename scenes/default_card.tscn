@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf7wns82x16m2"]
-
-[ext_resource type="Texture2D" uid="uid://c634e8v6ydbx0" path="res://imgs/card.png" id="1_owgwu"]
-[ext_resource type="Script" path="res://scripts/Cards/DefaultCard.cs" id="1_s6aey"]
-
-[node name="DefaultCard" type="Sprite2D"]
-texture = ExtResource("1_owgwu")
-script = ExtResource("1_s6aey")

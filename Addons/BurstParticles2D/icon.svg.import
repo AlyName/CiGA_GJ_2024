@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://davrefs0xfah5"
-path="res://.godot/imported/start_card.png-99e0c4290efc0bd47e37ba720d9c1552.ctex"
+uid="uid://jg74v8uf852p"
+path="res://.godot/imported/icon.svg-28dcd87d48e3985ce6436df319f98afd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://start_card.png"
-dest_files=["res://.godot/imported/start_card.png-99e0c4290efc0bd47e37ba720d9c1552.ctex"]
+source_file="res://Addons/BurstParticles2D/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-28dcd87d48e3985ce6436df319f98afd.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

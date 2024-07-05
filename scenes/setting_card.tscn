@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm7qq3x8pkymt"]
-
-[ext_resource type="Texture2D" uid="uid://dg17pmlcc88dw" path="res://imgs/setting_card.png" id="1_vnsca"]
-[ext_resource type="Script" path="res://scripts/Cards/SettingCard.cs" id="2_wt4po"]
-
-[node name="SettingCard" type="Sprite2D"]
-texture = ExtResource("1_vnsca")
-script = ExtResource("2_wt4po")

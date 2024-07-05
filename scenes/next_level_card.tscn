@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckl7x55erapoh"]
-
-[ext_resource type="Texture2D" uid="uid://b022xsmv5a147" path="res://imgs/next_card.png" id="1_4yq4p"]
-[ext_resource type="Script" path="res://scripts/Cards/NextLevelCard.cs" id="2_2gvb2"]
-
-[node name="NextLevelCard" type="Sprite2D"]
-texture = ExtResource("1_4yq4p")
-script = ExtResource("2_2gvb2")

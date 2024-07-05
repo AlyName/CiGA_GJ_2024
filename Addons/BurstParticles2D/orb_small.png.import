@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fw1mrh2jiuc"
-path="res://.godot/imported/sum_card.png-e4e832c281d1012e3e0fe05b442663a6.ctex"
+uid="uid://bowlkdcga0y7w"
+path="res://.godot/imported/orb_small.png-2085c5bc8b2f5b780cd3ab0a56ba05da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sum_card.png"
-dest_files=["res://.godot/imported/sum_card.png-e4e832c281d1012e3e0fe05b442663a6.ctex"]
+source_file="res://Addons/BurstParticles2D/orb_small.png"
+dest_files=["res://.godot/imported/orb_small.png-2085c5bc8b2f5b780cd3ab0a56ba05da.ctex"]
 
 [params]
 

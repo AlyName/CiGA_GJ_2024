@@ -32,6 +32,10 @@ texture = ExtResource("18_d8pls")
 script = ExtResource("1_eimto")
 Card = ExtResource("2_pbhbu")
 
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_86mme")
+
 [node name="CardWheel" type="Node2D" parent="."]
 script = ExtResource("3_m7c4h")
 
@@ -43,16 +47,6 @@ script = ExtResource("5_lw712")
 
 [node name="CardGenerator" type="Node" parent="."]
 script = ExtResource("6_qp5ip")
-card_scenes = {
-"Continue": ExtResource("12_jmssr"),
-"Default": ExtResource("7_fs6r6"),
-"Duplicate": ExtResource("13_ma24e"),
-"Multiply2": ExtResource("8_wsg6r"),
-"NextLevel": ExtResource("11_gyev3"),
-"Setting": ExtResource("14_ufve0"),
-"Start": ExtResource("9_arhsc"),
-"Sum": ExtResource("10_am0k7")
-}
 
 [node name="UI" type="VBoxContainer" parent="."]
 offset_right = 808.0
@@ -210,3 +204,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_vw1b8")
 [node name="Particles" parent="." instance=ExtResource("18_ondsx")]
 explode_material = ExtResource("19_oqgfq")
 explode_star = ExtResource("21_2de2k")
+orb_scene = ExtResource("14_ttumg")
+ring_scene = ExtResource("15_ssb16")
+
+[node name="DataLoader" type="Node2D" parent="."]
+script = ExtResource("22_8gxdh")
