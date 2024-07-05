@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://da4j8jeryniwk"]
+
+[node name="NumberAnimTest" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 127.0
+offset_bottom = 86.0

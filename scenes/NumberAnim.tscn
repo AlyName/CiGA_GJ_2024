@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://d32638qnbesup"]
+
+[ext_resource type="FontFile" uid="uid://bmcisriddgkyo" path="res://comic.ttf" id="1_tdlvi"]
+[ext_resource type="Script" path="res://scripts/Tween/NumTween.cs" id="2_4265v"]
+[ext_resource type="Script" path="res://scripts/Tween/NumTween2.cs" id="3_gnmce"]
+
+[sub_resource type="Theme" id="Theme_c6cdu"]
+
+[sub_resource type="Theme" id="Theme_3123c"]
+
+[node name="NumberAnim" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c6cdu")
+
+[node name="RichTextLabel_wave" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 97.0
+offset_top = 38.0
+offset_right = 439.0
+offset_bottom = 222.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[wave amp=100  freq=10]123456789[/wave]0"
+
+[node name="RichTextLabel2_tornado" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 98.0
+offset_top = 186.0
+offset_right = 440.0
+offset_bottom = 370.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[tornado  radius=5  freq=10]123456789[/tornado]0"
+
+[node name="RichTextLabel3_shake" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 98.0
+offset_top = 333.0
+offset_right = 440.0
+offset_bottom = 517.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[shake  rate =30  level = 10]123456789[/shake]0"
+
+[node name="RichTextLabel4_fade" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 488.0
+offset_right = 441.0
+offset_bottom = 672.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[fade start = 0 length = 10]123456789[/fade ]0"
+
+[node name="RichTextLabel5_rainbow" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 98.0
+offset_top = 636.0
+offset_right = 440.0
+offset_bottom = 820.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[rainbow freq = 1 sat = 0.5]123456789[/rainbow]0"
+
+[node name="RichTextLabel6_rainbow|shake" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 806.0
+offset_right = 441.0
+offset_bottom = 990.0
+theme = SubResource("Theme_3123c")
+theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_tdlvi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0[shake  rate =30  level = 10][rainbow freq = 1 sat = 0.5]123456789[/rainbow][/shake]0"
+
+[node name="Label_Tween" type="Label" parent="."]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 71.0
+offset_right = 735.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_tdlvi")
+theme_override_font_sizes/font_size = 50
+text = "0"
+script = ExtResource("2_4265v")
+
+[node name="Label_Tween2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 222.0
+offset_right = 742.0
+offset_bottom = 296.0
+theme_override_fonts/font = ExtResource("1_tdlvi")
+theme_override_font_sizes/font_size = 50
+text = "0"
+script = ExtResource("3_gnmce")
