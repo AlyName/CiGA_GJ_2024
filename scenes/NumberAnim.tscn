@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d32638qnbesup"]
+[gd_scene load_steps=6 format=3 uid="uid://d32638qnbesup"]
 
 [ext_resource type="FontFile" uid="uid://bmcisriddgkyo" path="res://comic.ttf" id="1_tdlvi"]
 [ext_resource type="Script" path="res://scripts/Tween/NumTween.cs" id="2_4265v"]
+[ext_resource type="Script" path="res://scripts/Tween/FloatTween.cs" id="3_6qc3m"]
 
 [sub_resource type="Theme" id="Theme_c6cdu"]
 
@@ -116,3 +117,15 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = " 0"
 script = ExtResource("2_4265v")
+
+[node name="Label_FloatTween" type="Label" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 220.0
+offset_right = 703.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("1_tdlvi")
+theme_override_font_sizes/font_size = 50
+text = "123456"
+horizontal_alignment = 1
+script = ExtResource("3_6qc3m")

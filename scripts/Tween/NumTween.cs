@@ -21,7 +21,7 @@ public partial class NumTween : RichTextLabel
 		
 		//NumTweenScroll(0,9999, 3f).SetShake();
 		
-		NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
+		//NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
 	}
 
 	/// <summary>
