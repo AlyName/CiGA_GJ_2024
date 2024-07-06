@@ -24,6 +24,13 @@ public partial class FloatTween : Label
 	{
 	}
 
+	/// <summary>
+	/// 跳动动画
+	/// </summary>
+	/// <param name="oriPos">起点</param>
+	/// <param name="tarPos">终点</param>
+	/// <param name="tarScale">目标大小</param>
+	/// <param name="tweenTime">动画时间</param>
 	public void PlayFloatTween(Vector2 oriPos, Vector2 tarPos, float tarScale, float tweenTime)
 	{
 		this.oriPos = oriPos;
