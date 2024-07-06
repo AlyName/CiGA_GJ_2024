@@ -19,7 +19,7 @@ public partial class FloatTween : Label
 		HorizontalAlignment = HorizontalAlignment.Center;
 		VerticalAlignment = VerticalAlignment.Center;
 		
-		PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), 1.3f, 1f);
+		PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), "+100",1.3f, 1f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,13 +33,16 @@ public partial class FloatTween : Label
 	/// <param name="oriPos">起点</param>
 	/// <param name="tarPos">终点</param>
 	/// <param name="tarScale">目标大小</param>
+	/// <param name="content">内容</param>
 	/// <param name="tweenTime">动画时间</param>
-	public void PlayFloatTween(Vector2 oriPos, Vector2 tarPos, float tarScale, float tweenTime)
+	public void PlayFloatTween(Vector2 oriPos, Vector2 tarPos, string content, float tarScale, float tweenTime)
 	{
 		this.oriPos = oriPos;
 		this.tarPos = tarPos;
 		this.tarScale = tarScale;
 		this.tweenTime = tweenTime;
+
+		Text = content;
 		
 		ExecuteFloatTween();
 	}
