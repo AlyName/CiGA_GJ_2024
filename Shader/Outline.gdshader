@@ -19,6 +19,7 @@ void fragment()
 	
 	vec4 outline = color_up + color_down + color_left + color_right;
 	outline.rgb = outline_color.rgb;
+	outline.a = min(outline.a,1);
 	
 	vec4 original_color = texture(TEXTURE, UV);
 	

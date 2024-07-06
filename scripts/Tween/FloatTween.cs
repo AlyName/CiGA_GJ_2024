@@ -18,8 +18,10 @@ public partial class FloatTween : Label
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
 		HorizontalAlignment = HorizontalAlignment.Center;
 		VerticalAlignment = VerticalAlignment.Center;
+
 		
-		PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), "+100",1.3f, 1f);
+		
+		//PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), "+100",1.3f, 1f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

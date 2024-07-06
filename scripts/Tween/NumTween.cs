@@ -11,34 +11,26 @@ public partial class NumTween : RichTextLabel
 	private Tween mTween;
 
 	private float mSize2TarTime = .3f;
-
-<<<<<<< HEAD
+	
 	private string kCenter = "[center]";
 	
-=======
->>>>>>> main
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		FitContent = false;
-<<<<<<< HEAD
+
 		BbcodeEnabled = true;
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
-		
+
+		GD.Print("11111");
+		SetFire();
 
 		//下面是示例
 
 		//NumTweenScroll(0,9999, 3f).SetShake();
 
-		NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
-=======
-		
-		//下面是示例
-		
-		//NumTweenScroll(0,9999, 3f).SetShake();
-		
-		// NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
->>>>>>> main
+		//NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
 	}
 
 	/// <summary>
@@ -91,6 +83,7 @@ public partial class NumTween : RichTextLabel
 	/// <summary>
 	/// 设置抖动
 	/// </summary>
+	
 	public NumTween SetShake()
 	{
 		shake = true;
@@ -101,8 +94,10 @@ public partial class NumTween : RichTextLabel
 	/// <summary>
 	/// 设置火焰效果
 	/// </summary>
-	public NumTween SetFire()
+	///<param name="pixSize">边缘光尺寸，我也不知道，默认10吧，如果效果可以就这样，不好只有自己调试了</param>
+	public NumTween SetFire(int pixSize)
 	{
+		DrawStringOutline();
 		
 		return this;
 	}
@@ -110,18 +105,10 @@ public partial class NumTween : RichTextLabel
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-<<<<<<< HEAD
-		if (numStart < numEnd)
+		if (numStart <= numEnd)
 			Text = $"{kCenter}{numStart}";
 		else if(shake)
 			Text = $"{kCenter}[shake rate = 30 level = 10]{numStart}";
-=======
-		// if (numStart != numEnd)
-		Text = numStart.ToString();
-		// else 
-		if(shake)
-			Text = $"[shake rate = 30 level = 10]{numStart.ToString()}";
->>>>>>> main
 	}
 	
 	private void OnTweenCompleted(object obj, NodePath key)

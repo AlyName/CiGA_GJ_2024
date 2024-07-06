@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqpowmt3cidfb"]
+
+[ext_resource type="Script" path="res://scripts/ShaderManager.cs" id="1_715bf"]
+[ext_resource type="Shader" path="res://Shader/Outline.gdshader" id="2_hpoh3"]
+
+[node name="ShaderManager" type="Node"]
+script = ExtResource("1_715bf")
+outlineShader = ExtResource("2_hpoh3")

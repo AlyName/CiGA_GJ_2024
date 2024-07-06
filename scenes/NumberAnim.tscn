@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d32638qnbesup"]
+[gd_scene load_steps=10 format=3 uid="uid://d32638qnbesup"]
 
 [ext_resource type="FontFile" uid="uid://bmcisriddgkyo" path="res://comic.ttf" id="1_tdlvi"]
+[ext_resource type="PackedScene" uid="uid://bqpowmt3cidfb" path="res://scenes/ShaderManager.tscn" id="1_yviha"]
 [ext_resource type="Script" path="res://scripts/Tween/NumTween.cs" id="2_4265v"]
 [ext_resource type="Script" path="res://scripts/Tween/FloatTween.cs" id="3_6qc3m"]
 [ext_resource type="Shader" path="res://Shader/Outline.gdshader" id="3_p748a"]
@@ -9,10 +10,15 @@
 
 [sub_resource type="Theme" id="Theme_3123c"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdvbn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdocs"]
 shader = ExtResource("3_p748a")
-shader_parameter/outline_width = 1.0
-shader_parameter/outline_color = Color(0.694118, 0.717647, 0.729412, 1)
+shader_parameter/outline_width = 2.2
+shader_parameter/outline_color = Color(0.603922, 0.258824, 0.627451, 1)
+
+[sub_resource type="Environment" id="Environment_75weg"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.62
 
 [node name="NumberAnim" type="Control"]
 layout_mode = 3
@@ -24,6 +30,8 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c6cdu")
+
+[node name="ShaderManager" parent="." instance=ExtResource("1_yviha")]
 
 [node name="RichTextLabel_wave" type="RichTextLabel" parent="."]
 clip_contents = false
@@ -112,22 +120,22 @@ text = "0[shake  rate =30  level = 10][rainbow freq = 1 sat = 0.5]123456789[/rai
 [node name="RichTextLabel_NumTween" type="RichTextLabel" parent="."]
 clip_contents = false
 layout_mode = 0
-offset_left = 598.0
-offset_top = 78.0
-offset_right = 998.0
-offset_bottom = 178.0
+offset_left = 661.0
+offset_top = 111.0
+offset_right = 1061.0
+offset_bottom = 211.0
 scale = Vector2(1.01, 1)
 pivot_offset = Vector2(200, 50)
 theme = SubResource("Theme_3123c")
 theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
 theme_override_fonts/normal_font = ExtResource("1_tdlvi")
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
-text = "[center]"
+text = "[center]1234567"
 script = ExtResource("2_4265v")
 
 [node name="Label_FloatTween" type="Label" parent="."]
-material = SubResource("ShaderMaterial_pdvbn")
+material = SubResource("ShaderMaterial_mdocs")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,3 +156,6 @@ text = "123456"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_6qc3m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Label_FloatTween"]
+environment = SubResource("Environment_75weg")
