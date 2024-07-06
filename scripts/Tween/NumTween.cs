@@ -16,11 +16,13 @@ public partial class NumTween : RichTextLabel
 	public override void _Ready()
 	{
 		FitContent = false;
-		
+
+		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
+
 		//下面是示例
-		
+
 		//NumTweenScroll(0,9999, 3f).SetShake();
-		
+
 		//NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
 	}
 

@@ -14,6 +14,8 @@ public partial class FloatTween : Label
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
+		
 		PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), 1.3f, 1f);
 	}
 
@@ -44,6 +46,8 @@ public partial class FloatTween : Label
 			.SetTrans(Tween.TransitionType.Quint)
 			.SetEase(Tween.EaseType.Out);
 		mTween.TweenProperty(this, "modulate", new Color(Colors.White, 0), tweenTime);
-		mTween.TweenProperty(this, "scale", Vector2.One * tarScale, tweenTime);
+		mTween.TweenProperty(this, "scale", Vector2.One * tarScale, tweenTime)
+			.SetTrans(Tween.TransitionType.Quint)
+			.SetEase(Tween.EaseType.Out);
 	}
 }
