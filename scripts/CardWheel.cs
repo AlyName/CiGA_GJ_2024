@@ -12,7 +12,7 @@ public partial class CardWheel : Node2D{
 	public List<Card> cards=new List<Card>();
 	public Stack<List<Tuple<string,int,int>>> stack_history_cards=new Stack<List<Tuple<string,int,int>>>();
 	[Export]
-	public float eta=120000f,tau=0.25f,circle_a=700f,circle_b=200f,sa=-0.0025f,a_angle=0.05f;
+	public float eta=120000f,tau=0.25f,circle_a=900f,circle_b=200f,sa=-0.0025f,a_angle=0.05f;
 	[Export]
 	public Vector2 center;
 
@@ -117,10 +117,10 @@ public partial class CardWheel : Node2D{
 				cards[i].n_scale=new Vector2(1,1);
 			}else{
 				cards[i].can_drag=0;
-				cards[i].Modulate=new Color(0.5f,0.5f,0.5f,1)+new Color(0.25f,0.25f,0.25f,0)/card_num*cards[i].ZIndex;
+				cards[i].Modulate=new Color(0.35f,0.35f,0.35f,1)+new Color(0.25f,0.25f,0.25f,0)/card_num*cards[i].ZIndex;
 				cards[i].n_scale=new Vector2(0.75f,0.75f)+new Vector2(0.25f,0.25f)/card_num*cards[i].ZIndex;
 			}
-			cards[i].Modulate*=cards[i].n_color;
+			cards[i].SelfModulate=cards[i].Modulate*cards[i].n_color;
 		}
 
 	}
@@ -136,7 +136,7 @@ public partial class CardWheel : Node2D{
 				press_mouse_pos=MouseInput.get_mouse_input().mouse_pos;
 			}
 			now_pressed=1;
-			angle=press_angle+(MouseInput.get_mouse_input().mouse_pos-press_mouse_pos).X*sa;
+			angle=press_angle+(MouseInput.get_mouse_input().mouse_pos-press_mouse_pos).X*sa*calc_mp(cards.Count);
 		}else{
 			now_pressed=0;
 			int card_num=cards.Count;
@@ -169,6 +169,13 @@ public partial class CardWheel : Node2D{
 
 		}
 
+	}
+
+	float calc_mp(int n_count){
+		if(n_count==0)return 1f;
+		else{
+			return (float)Math.Pow(6f/n_count,0.7)*1.2f;
+		}
 	}
 
 	public void rotate_to(int fp){

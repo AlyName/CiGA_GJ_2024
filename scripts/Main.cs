@@ -11,7 +11,7 @@ public partial class Main : Node2D{
 	public PackedScene PackedStar;
 	public static Main instance;
 
-	
+	public float main_clock=0;
 
 	public Main(){
 		Debug.WriteLine("Start");
@@ -19,6 +19,7 @@ public partial class Main : Node2D{
 	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
+		main_clock=0;
 		// for(int i=1;i<=10;i++){
 
 		// 	var card = Card.Instantiate() as CardMove;
@@ -27,12 +28,22 @@ public partial class Main : Node2D{
 		// 	AddChild(card);
 		// 	GetNode<CardWheel>("CardWheel").add_card(i,0);
 		// }
+		AnimatedSprite2D fg=GetNode<AnimatedSprite2D>("Foreground");
+		// 设置不循环播放
+		
+		fg.Play();
 		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Start);
+		set_first_play();
+	}
+
+	async Task set_first_play(){
+		await wait_time(3.5f);
+		UI.get_ui().ZIndex=150;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
-		
+		main_clock+=(float)delta;
 	}
 
 	// public void generate_card(int card_score){

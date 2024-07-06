@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://fyvwpo14dwev"]
+[gd_scene load_steps=2 format=3 uid="uid://fyvwpo14dwev"]
 
-[ext_resource type="Texture2D" uid="uid://c634e8v6ydbx0" path="res://imgs/card.png" id="1_fb0cw"]
 [ext_resource type="Script" path="res://scripts/CardMove.cs" id="1_vnvf1"]
 
 [node name="CardMove" type="Sprite2D"]
-texture = ExtResource("1_fb0cw")
 script = ExtResource("1_vnvf1")

@@ -214,21 +214,7 @@ public partial class MonoControl : Node{
 					break;
 				}
 			}
-			// int score=(int)Math.Pow(2,card_level);
-			nf=GD.Randf();
-			if(nf<0.1){
-				CardGenerator.get_generator().generate_card("RareBonus",card_level);
-			}else if(nf<0.2){
-				CardGenerator.get_generator().generate_card("Multiply",card_level);
-			}else if(nf<0.7){
-				CardGenerator.get_generator().generate_card("Default",card_level);
-			}else if(nf<0.8){
-				CardGenerator.get_generator().generate_card("LastBonus",card_level);
-			}else if(nf<0.9){
-				CardGenerator.get_generator().generate_card("ThreeRow",card_level);
-			}else{
-				CardGenerator.get_generator().generate_card("Sum",card_level);
-			}
+			CardGenerator.get_generator().generate_random_card(card_level);
 		}
 	}
 

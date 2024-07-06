@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cek28oqo7om5j"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cek28oqo7om5j"]
+
+[ext_resource type="FontFile" uid="uid://bkohqnu4gt00r" path="res://yan.ttf" id="1_6cif2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h407e"]
 bg_color = Color(0, 0, 0, 1)
@@ -13,5 +15,6 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [resource]
-default_font_size = 20
+default_font = ExtResource("1_6cif2")
+default_font_size = 30
 Panel/styles/panel = SubResource("StyleBoxFlat_h407e")

@@ -15,6 +15,7 @@ public partial class CardEvent{
 		Effect
 	}
 	public Type event_type;
+	public bool is_instant_effect=false;
     public int score,card_level,card_type;
 	public string card_type_s;
 	public Action<LevelManager,int> action;
