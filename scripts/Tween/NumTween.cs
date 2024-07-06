@@ -12,18 +12,21 @@ public partial class NumTween : RichTextLabel
 
 	private float mSize2TarTime = .3f;
 
+	private string kCenter = "[center]";
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		FitContent = false;
-
+		BbcodeEnabled = true;
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
+		
 
 		//下面是示例
 
 		//NumTweenScroll(0,9999, 3f).SetShake();
 
-		//NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
+		NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
 	}
 
 	/// <summary>
@@ -96,9 +99,9 @@ public partial class NumTween : RichTextLabel
 	public override void _Process(double delta)
 	{
 		if (numStart < numEnd)
-			Text = numStart.ToString();
+			Text = $"{kCenter}{numStart}";
 		else if(shake)
-			Text = $"[shake rate = 30 level = 10]{numStart}";
+			Text = $"{kCenter}[shake rate = 30 level = 10]{numStart}";
 	}
 	
 	private void OnTweenCompleted(object obj, NodePath key)

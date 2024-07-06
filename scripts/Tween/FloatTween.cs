@@ -14,7 +14,10 @@ public partial class FloatTween : Label
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//初始化
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
+		HorizontalAlignment = HorizontalAlignment.Center;
+		VerticalAlignment = VerticalAlignment.Center;
 		
 		PlayFloatTween(new Vector2(500, 500), new Vector2(500, 300), 1.3f, 1f);
 	}

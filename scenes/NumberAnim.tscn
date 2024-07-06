@@ -106,16 +106,18 @@ text = "0[shake  rate =30  level = 10][rainbow freq = 1 sat = 0.5]123456789[/rai
 [node name="RichTextLabel_NumTween" type="RichTextLabel" parent="."]
 clip_contents = false
 layout_mode = 0
-offset_left = 641.0
-offset_top = 49.0
-offset_right = 983.0
-offset_bottom = 233.0
+offset_left = 598.0
+offset_top = 78.0
+offset_right = 998.0
+offset_bottom = 178.0
+scale = Vector2(1.01, 1)
+pivot_offset = Vector2(200, 50)
 theme = SubResource("Theme_3123c")
 theme_override_colors/default_color = Color(0.403922, 0.427451, 0.490196, 1)
 theme_override_fonts/normal_font = ExtResource("1_tdlvi")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = " 0"
+text = "[center]"
 script = ExtResource("2_4265v")
 
 [node name="Label_FloatTween" type="Label" parent="."]
@@ -137,4 +139,5 @@ theme_override_fonts/font = ExtResource("1_tdlvi")
 theme_override_font_sizes/font_size = 50
 text = "123456"
 horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("3_6qc3m")
