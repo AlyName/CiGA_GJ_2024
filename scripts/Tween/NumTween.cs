@@ -21,7 +21,7 @@ public partial class NumTween : RichTextLabel
 		
 		//NumTweenScroll(0,9999, 3f).SetShake();
 		
-		//NumTweenSize(0, 9999, 1.5f, .5f).SetShake().SetFire();
+		NumTweenSize(0, 9999, 1.5f, .5f).SetShake().SetFire();
 	}
 
 	/// <summary>
@@ -74,17 +74,20 @@ public partial class NumTween : RichTextLabel
 	/// <summary>
 	/// 设置抖动
 	/// </summary>
-	public void SetShake()
+	public NumTween SetShake()
 	{
 		shake = true;
+		
+		return this;
 	}
 	
 	/// <summary>
 	/// 设置火焰效果
 	/// </summary>
-	public void SetFire()
+	public NumTween SetFire()
 	{
 		
+		return this;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -120,7 +123,7 @@ public partial class NumTween : RichTextLabel
 		
 		mTween = GetTree().CreateTween();
 		mTween.TweenProperty(this, "scale", targetScale * Vector2.One, tweenTime * mSize2TarTime)
-			.SetTrans(Tween.TransitionType.Sine)
+			.SetTrans(Tween.TransitionType.Elastic)
 			.SetEase(Tween.EaseType.Out);
 
 		mTween.TweenProperty(this, "numStart", numEnd, tweenTime * 0f);
