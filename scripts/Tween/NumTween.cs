@@ -21,7 +21,7 @@ public partial class NumTween : RichTextLabel
 		
 		//NumTweenScroll(0,9999, 3f).SetShake();
 		
-		NumTweenSize(0, 9999, 1.5f, .5f).SetShake().SetFire();
+		NumTweenSize(0, 9999, 1.5f, .8f).SetShake().SetFire();
 	}
 
 	/// <summary>
@@ -55,7 +55,7 @@ public partial class NumTween : RichTextLabel
 	/// <param name="tweenTime">动画时间</param>
 	/// <param name="size2TarTime">变到目标Scale占动画时间的比例， 1-size2TarTime就是恢复原始大小的时间</param>
 	/// <returns></returns>
-	public NumTween NumTweenSize(int numStart, int numEnd, float targetScale, float tweenTime, float size2TarTime = .3f)
+	public NumTween NumTweenSize(int numStart, int numEnd, float targetScale, float tweenTime, float size2TarTime = .4f)
 	{
 		this.numStart = numStart;
 		this.numEnd = numEnd;
@@ -123,11 +123,13 @@ public partial class NumTween : RichTextLabel
 		
 		mTween = GetTree().CreateTween();
 		mTween.TweenProperty(this, "scale", targetScale * Vector2.One, tweenTime * mSize2TarTime)
-			.SetTrans(Tween.TransitionType.Elastic)
+			.SetTrans(Tween.TransitionType.Sine)
 			.SetEase(Tween.EaseType.Out);
 
 		mTween.TweenProperty(this, "numStart", numEnd, tweenTime * 0f);
 
-		mTween.TweenProperty(this, "scale", Vector2.One, tweenTime * (1 - mSize2TarTime));
+		mTween.TweenProperty(this, "scale", Vector2.One, tweenTime * (1 - mSize2TarTime))
+			.SetTrans(Tween.TransitionType.Back)
+			.SetEase(Tween.EaseType.Out);
 	}
 }
