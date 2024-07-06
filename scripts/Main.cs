@@ -28,7 +28,17 @@ public partial class Main : Node2D{
 		// 	AddChild(card);
 		// 	GetNode<CardWheel>("CardWheel").add_card(i,0);
 		// }
+		AnimatedSprite2D fg=GetNode<AnimatedSprite2D>("Foreground");
+		// 设置不循环播放
+		
+		fg.Play();
 		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Start);
+		set_first_play();
+	}
+
+	async Task set_first_play(){
+		await wait_time(3.5f);
+		UI.get_ui().ZIndex=150;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -45,6 +45,7 @@ public partial class LevelManager{
             flow.NextNode(this,now_event.card_level);
             handle_special_event(now_event);
         }
+        effect_manager.apply_instant_effect();
         // Debug.WriteLine("check");
         check_round_end();
         return true;

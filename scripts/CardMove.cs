@@ -9,6 +9,8 @@ public partial class CardMove : Sprite2D{
 	private bool _dragging=false;
 	private Timer _returnTimer;
 	public Label card_label;
+
+	public AnimatedSprite2D animated;
 	[Export]
 	public float _returnSpeed = 5f;
 	[Export]
@@ -39,10 +41,15 @@ public partial class CardMove : Sprite2D{
 		viewrect=GetViewport().GetVisibleRect();
 		
 
-		card_label=new Label();
-		card_label.Position=new Vector2(0,20);
-		card_label.HorizontalAlignment=HorizontalAlignment.Center;
-		AddChild(card_label);
+		// card_label=new Label();
+		// card_label.Position=new Vector2(0,20);
+		// card_label.HorizontalAlignment=HorizontalAlignment.Center;
+		// AddChild(card_label);
+
+		
+		animated.Play();
+		AddChild(animated);
+		animated.ZIndex=-1;
 	}
 	
 
@@ -138,7 +145,7 @@ public partial class CardMove : Sprite2D{
 	}
 
 	virtual protected void check_sprite(){
-		Scale+=(n_scale-Scale)*0.1f;
+		Scale+=(0.5f*n_scale-Scale)*0.1f;
 		
 	}
 

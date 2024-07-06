@@ -12,7 +12,7 @@ public partial class CardWheel : Node2D{
 	public List<Card> cards=new List<Card>();
 	public Stack<List<Tuple<string,int,int>>> stack_history_cards=new Stack<List<Tuple<string,int,int>>>();
 	[Export]
-	public float eta=120000f,tau=0.25f,circle_a=700f,circle_b=200f,sa=-0.0025f,a_angle=0.05f;
+	public float eta=120000f,tau=0.25f,circle_a=900f,circle_b=200f,sa=-0.0025f,a_angle=0.05f;
 	[Export]
 	public Vector2 center;
 
@@ -120,7 +120,7 @@ public partial class CardWheel : Node2D{
 				cards[i].Modulate=new Color(0.35f,0.35f,0.35f,1)+new Color(0.25f,0.25f,0.25f,0)/card_num*cards[i].ZIndex;
 				cards[i].n_scale=new Vector2(0.75f,0.75f)+new Vector2(0.25f,0.25f)/card_num*cards[i].ZIndex;
 			}
-			cards[i].Modulate*=cards[i].n_color;
+			cards[i].SelfModulate=cards[i].Modulate*cards[i].n_color;
 		}
 
 	}

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class UI : VBoxContainer{
 	public static UI instance;
@@ -8,11 +9,12 @@ public partial class UI : VBoxContainer{
 	}
 
 	int label_a_n_num,label_b_n_num,label_a_goal_num,label_b_goal_num;
-	Label label_a,label_b,label_mid,label_desc,label_bottom_a;
+	NumTween label_a,label_b;
+	Label label_mid,label_desc,label_bottom_a;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
-		label_a=GetNode<Label>("Scores/PanelA/LabelA");
-		label_b=GetNode<Label>("Scores/PanelB/LabelB");
+		label_a=GetNode<NumTween>("Scores/PanelA/LabelA");
+		label_b=GetNode<NumTween>("Scores/PanelB/LabelB");
 		label_mid=GetNode<Label>("Scores/PanelMid/LabelMid");
 		label_desc=GetNode<Label>("Description/PanelDescription/LabelDescription");
 		label_bottom_a=GetNode<Label>("Bottom/PanelBottomA/LabelBottomA");
@@ -27,27 +29,38 @@ public partial class UI : VBoxContainer{
 		Size=GetViewport().GetVisibleRect().Size;
 		Position=GetViewport().GetVisibleRect().Position;
 		CardWheel.get_wheel().center=2*GetNode<Control>("CardDeck").GetRect().Position+GetNode<Control>("CardDeck").GetRect().Size;
-		label_a_n_num=smooth_change_number(label_a_n_num,label_a_goal_num);
-		label_b_n_num=smooth_change_number(label_b_n_num,label_b_goal_num);
-		label_a.Text="GOAL "+label_a_n_num.ToString().PadLeft(8,'0');
-		label_b.Text="NOW "+label_b_n_num.ToString().PadLeft(8,'0');
-		// TODO ...
+		if(label_a_goal_num!=label_a_n_num){
+			label_a.NumTweenScroll(numStart:label_a_n_num,numEnd:label_a_goal_num,tweenTime:0.5f);
+			label_a_n_num=label_a_goal_num;
+		}
+		// Debug.WriteLine("label_a_n_num:"+label_a_n_num.ToString());
+		// Debug.WriteLine("label_a_goal_num:"+label_a_goal_num.ToString());
+		if(label_b_goal_num!=label_b_n_num){
+			if(Math.Abs(label_b_goal_num-label_b_n_num)>100){
+			    label_b.NumTweenSize(numStart:label_b_n_num,numEnd:label_b_goal_num,targetScale:1.5f,tweenTime:0.5f);
+			}else{
+		    	label_b.NumTweenScroll(numStart:label_b_n_num,numEnd:label_b_goal_num,tweenTime:0.5f);
+			}
+			label_b_n_num=label_b_goal_num;
+		}
+		// Debug.WriteLine("label_b_n_num:"+label_b_n_num.ToString());
+		// Debug.WriteLine("label_b_goal_num:"+label_b_goal_num.ToString());
 	}
 
-	int smooth_change_number(int n_num,int goal_num){
-		if(goal_num<0)goal_num=0;
-		if(Math.Abs(goal_num-n_num)>10){
-			return n_num+(goal_num-n_num)/5;
-		}else{
-			if(goal_num>n_num){
-			    return n_num+1;
-			}else if(goal_num<n_num){
-				return n_num-1;
-			}else{
-				return n_num;
-			}
-		}
-	}
+	// int smooth_change_number(int n_num,int goal_num){
+	// 	if(goal_num<0)goal_num=0;
+	// 	if(Math.Abs(goal_num-n_num)>10){
+	// 		return n_num+(goal_num-n_num)/5;
+	// 	}else{
+	// 		if(goal_num>n_num){
+	// 		    return n_num+1;
+	// 		}else if(goal_num<n_num){
+	// 			return n_num-1;
+	// 		}else{
+	// 			return n_num;
+	// 		}
+	// 	}
+	// }
 
 	public void set_label_a_number(int nn){
 		label_a_goal_num=nn;
