@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://d32638qnbesup"]
+[gd_scene load_steps=8 format=3 uid="uid://d32638qnbesup"]
 
 [ext_resource type="FontFile" uid="uid://bmcisriddgkyo" path="res://comic.ttf" id="1_tdlvi"]
 [ext_resource type="Script" path="res://scripts/Tween/NumTween.cs" id="2_4265v"]
 [ext_resource type="Script" path="res://scripts/Tween/FloatTween.cs" id="3_6qc3m"]
+[ext_resource type="Shader" path="res://Shader/Outline.gdshader" id="3_p748a"]
 
 [sub_resource type="Theme" id="Theme_c6cdu"]
 
 [sub_resource type="Theme" id="Theme_3123c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdvbn"]
+shader = ExtResource("3_p748a")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.694118, 0.717647, 0.729412, 1)
 
 [node name="NumberAnim" type="Control"]
 layout_mode = 3
@@ -121,6 +127,7 @@ text = "[center]"
 script = ExtResource("2_4265v")
 
 [node name="Label_FloatTween" type="Label" parent="."]
+material = SubResource("ShaderMaterial_pdvbn")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
