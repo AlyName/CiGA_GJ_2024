@@ -1,8 +1,10 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public enum AudioEnum
 {
+	None,
 	/// <summary> 上划 </summary>
 	PlayUp,
 	/// <summary> 下划 </summary>
@@ -34,13 +36,79 @@ public partial class AudioManager : Node
 
 	public static AudioManager Instance => sAudioManager;
 
+	[Export()]public AudioStream playUp;
+	[Export()]public AudioStream playDown;
+	[Export()]public AudioStream mainMenu;
+	[Export()]public AudioStream game;
+	[Export()]public AudioStream countDown;
+	[Export()]public AudioStream setting;
+	[Export()]public AudioStream laughX1;
+	[Export()]public AudioStream laughX2;
+	[Export()]public AudioStream laughX3;
+	[Export()]public AudioStream laughX4;
+	[Export()]public AudioStream bee;
+
+	[Export()]public AudioStreamPlayer audioStreamPlayer;
+
+	private AudioEnum mBackAudio;
+
+	private Dictionary<AudioEnum, AudioStream> mAudioDic = new Dictionary<AudioEnum, AudioStream>();
+
+	private List<AudioStreamPlayer> mPlayingStreamPlayers = new List<AudioStreamPlayer>();
+
 	public override void _Ready()
 	{
 		sAudioManager = this;
+
+		mAudioDic.Add(AudioEnum.PlayUp, playUp);
+		mAudioDic.Add(AudioEnum.PlayDown, playDown);
+		mAudioDic.Add(AudioEnum.MainMenu, mainMenu);
+		mAudioDic.Add(AudioEnum.Game, game);
+		mAudioDic.Add(AudioEnum.CountDown, countDown);
+		mAudioDic.Add(AudioEnum.Setting, setting);
+		mAudioDic.Add(AudioEnum.LaughX1, laughX1);
+		mAudioDic.Add(AudioEnum.LaughX2, laughX2);
+		mAudioDic.Add(AudioEnum.LaughX3, laughX3);
+		mAudioDic.Add(AudioEnum.LaughX4, laughX4);
+		mAudioDic.Add(AudioEnum.Bee, bee);
+
+		PlaySound(AudioEnum.PlayUp);
 	}
 
 	public void PlaySound(AudioEnum audio)
 	{
+		if (audio is AudioEnum.MainMenu or AudioEnum.Game)
+		{
+			audioStreamPlayer.Stream = mAudioDic[audio];
+            audioStreamPlayer.Play();
+            mBackAudio = audio;
+		}
+		else
+		{
+			var player = new AudioStreamPlayer();
+			player.Stream = mAudioDic[audio];
+			player.Play();
+			mPlayingStreamPlayers.Add(player);
+			AddChild(player);
+		}
 		
+		
+	}
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+		
+		if(mBackAudio is not AudioEnum.None && !audioStreamPlayer.Playing)
+			audioStreamPlayer.Play();
+
+		foreach (var player in mPlayingStreamPlayers)
+		{
+			if(player.Playing)
+				continue;
+			
+			RemoveChild(player);
+			player.QueueFree();
+		}
 	}
 }
