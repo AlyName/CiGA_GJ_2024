@@ -23,9 +23,6 @@ public partial class NumTween : RichTextLabel
 		BbcodeEnabled = true;
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
 
-		GD.Print("11111");
-		SetFire();
-
 		//下面是示例
 
 		//NumTweenScroll(0,9999, 3f).SetShake();
@@ -97,7 +94,7 @@ public partial class NumTween : RichTextLabel
 	///<param name="pixSize">边缘光尺寸，我也不知道，默认10吧，如果效果可以就这样，不好只有自己调试了</param>
 	public NumTween SetFire(int pixSize)
 	{
-		DrawStringOutline();
+		
 		
 		return this;
 	}
