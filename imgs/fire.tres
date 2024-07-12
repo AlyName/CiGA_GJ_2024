@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://b5cip1n8a5r60"]
+
+[ext_resource type="Texture2D" uid="uid://ctf63lh6qp5cs" path="res://imgs/蓝火特效/1.png" id="1_pqf38"]
+[ext_resource type="Texture2D" uid="uid://bdy4wsxsueys" path="res://imgs/蓝火特效/2.png" id="2_mcwtb"]
+[ext_resource type="Texture2D" uid="uid://c0cf16alyfp3t" path="res://imgs/蓝火特效/3.png" id="3_kogjq"]
+[ext_resource type="Texture2D" uid="uid://16ymtmiijtm5" path="res://imgs/蓝火特效/4.png" id="4_e8wfp"]
+[ext_resource type="Texture2D" uid="uid://ds3cba746ocna" path="res://imgs/蓝火特效/5.png" id="5_pjs8w"]
+[ext_resource type="Texture2D" uid="uid://dwt7m6ikbfgtb" path="res://imgs/蓝火特效/6.png" id="6_p8nrm"]
+[ext_resource type="Texture2D" uid="uid://dx26e07lijkn6" path="res://imgs/红火特效/1.png" id="7_wv8k6"]
+[ext_resource type="Texture2D" uid="uid://cpvk32t5selck" path="res://imgs/红火特效/2.png" id="8_b02ah"]
+[ext_resource type="Texture2D" uid="uid://bxx16wfrt5t43" path="res://imgs/红火特效/3.png" id="9_va125"]
+[ext_resource type="Texture2D" uid="uid://bogvpg3eyisdk" path="res://imgs/红火特效/4.png" id="10_13j13"]
+[ext_resource type="Texture2D" uid="uid://vys6h6g8mgcl" path="res://imgs/红火特效/5.png" id="11_fi6u4"]
+[ext_resource type="Texture2D" uid="uid://cpp4mso3a3eib" path="res://imgs/红火特效/6.png" id="12_cimw6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pqf38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mcwtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kogjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e8wfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pjs8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p8nrm")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wv8k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b02ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_va125")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_13j13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fi6u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cimw6")
+}],
+"loop": true,
+"name": &"red",
+"speed": 20.0
+}]

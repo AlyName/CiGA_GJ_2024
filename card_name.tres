@@ -1,0 +1,64 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cphbncy8gjox4"]
+
+[ext_resource type="Texture2D" uid="uid://br4d3wtq25f6o" path="res://imgs/UI/卡牌名称框/7.png" id="1_ctbco"]
+[ext_resource type="Texture2D" uid="uid://b0dns5pbitkqp" path="res://imgs/UI/卡牌名称框/6.png" id="2_alrws"]
+[ext_resource type="Texture2D" uid="uid://6vo6ryqietup" path="res://imgs/UI/卡牌名称框/5.png" id="3_25wc2"]
+[ext_resource type="Texture2D" uid="uid://dkmxwlda0x61e" path="res://imgs/UI/卡牌名称框/4.png" id="4_lo8fb"]
+[ext_resource type="Texture2D" uid="uid://d3gdvhmmq5h1w" path="res://imgs/UI/卡牌名称框/3.png" id="5_5dp76"]
+[ext_resource type="Texture2D" uid="uid://cdm7gpviptqln" path="res://imgs/UI/卡牌名称框/2.png" id="6_6kcoe"]
+[ext_resource type="Texture2D" uid="uid://b8qk5k83s85i6" path="res://imgs/UI/卡牌名称框/1.png" id="7_3rmy0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ctbco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_alrws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_25wc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lo8fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5dp76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6kcoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3rmy0")
+}],
+"loop": false,
+"name": &"inv",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3rmy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6kcoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5dp76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lo8fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_25wc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_alrws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ctbco")
+}],
+"loop": false,
+"name": &"mono",
+"speed": 20.0
+}]

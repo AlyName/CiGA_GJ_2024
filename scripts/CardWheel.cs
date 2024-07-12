@@ -110,15 +110,15 @@ public partial class CardWheel : Node2D{
 		}
 		card_y.Sort();
 		for(int i=0;i<card_num;i++){
-			cards[i].ZIndex=card_y.IndexOf(cards[i].Position.Y);
-			if(cards[i].ZIndex==card_num-1){
+			cards[i].ZIndex=card_y.IndexOf(cards[i].Position.Y)*2+ZIndex;
+			if(cards[i].ZIndex==2*(card_num-1)+ZIndex){
 				cards[i].can_drag=1;
 				cards[i].Modulate=new Color(1,1,1,1);
 				cards[i].n_scale=new Vector2(1,1);
 			}else{
 				cards[i].can_drag=0;
-				cards[i].Modulate=new Color(0.35f,0.35f,0.35f,1)+new Color(0.25f,0.25f,0.25f,0)/card_num*cards[i].ZIndex;
-				cards[i].n_scale=new Vector2(0.75f,0.75f)+new Vector2(0.25f,0.25f)/card_num*cards[i].ZIndex;
+				cards[i].Modulate=new Color(0.35f,0.35f,0.35f,1)+new Color(0.125f,0.125f,0.125f,0)/card_num*cards[i].ZIndex;
+				cards[i].n_scale=new Vector2(0.75f,0.75f)+new Vector2(0.125f,0.125f)/card_num*cards[i].ZIndex;
 			}
 			cards[i].SelfModulate=cards[i].Modulate*cards[i].n_color;
 		}
@@ -209,8 +209,18 @@ public partial class CardWheel : Node2D{
 		return true;
 	}
 
+	public Card front_card(){
+		for(int i=0;i<cards.Count;i++){
+			if(cards[i].can_drag==1){
+			    return cards[i];
+			}
+		}
+		return null;
+	}
+
 	public void clear_stack(){
 		while(stack_history_cards.Count!=0)stack_history_cards.Pop();
+		UI.get_ui().clear_effect_node();
 	}
 
 	public int left_card(){

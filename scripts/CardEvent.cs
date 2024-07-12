@@ -12,7 +12,12 @@ public partial class CardEvent{
 		Continue,
 		NextLevel,
         AddScore,
-		Effect
+		Effect,
+		SetFullScreen,
+		SetWindow,
+		SetMusic,
+		SetSilence,
+		SetHelp
 	}
 	public Type event_type;
 	public bool is_instant_effect=false;

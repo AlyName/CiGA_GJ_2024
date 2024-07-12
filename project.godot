@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="CardGame"
+config/name="命運戲場 - Theater of Kismet"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="res://imgs/LOGO.2.png"
+boot_splash/fullsize=false
+config/icon="res://imgs/icon/icon.png"
+config/windows_native_icon="res://imgs/20240707155230_7ba0e77a66a747f1af9b3a50563197a9.ico"
 
 [display]
 

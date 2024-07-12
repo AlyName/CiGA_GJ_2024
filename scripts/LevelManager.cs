@@ -15,7 +15,7 @@ public partial class LevelManager{
         //test level init
         goal_score=100+(level_id-1)*200;
         now_score=0;
-        max_round=4+level_id;
+        max_round=5;
         now_round=0;
         round_score=0;
         //end

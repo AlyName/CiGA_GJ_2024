@@ -7,7 +7,7 @@ public partial class MouseInput : Node{
 	[Export]
 	public string mouse_on_node_name,last_on_node_name;
 	public Vector2 mouse_pos,mouse_v;
-	public bool is_mouse_press,n_press;
+	public bool is_mouse_press,n_press,nn_press;
 	public bool is_abled=true;
 
 	public float time_until_last_press=0;
@@ -38,10 +38,12 @@ public partial class MouseInput : Node{
 		if (@event is InputEventMouseButton eventMouseButton){
 			if (eventMouseButton.ButtonIndex == MouseButton.Left){
 				if(eventMouseButton.Pressed){
+					nn_press=true;
 					if(!check_ui_pressed()){
 						n_press=true;
 					}
 				}else{
+					nn_press=false;
 					n_press=false;
 				}
 				// if(eventMouseButton.Pressed&&(sprite.GetRect()).HasPoint(ToLocal(GetGlobalMousePosition()))){
@@ -52,10 +54,17 @@ public partial class MouseInput : Node{
 			}
 		}
 	}
+	public bool is_mouse_on_setting(){
+		Sprite2D bottom_b=UI.get_ui().get_setting();
+		if(bottom_b.GetRect().HasPoint(bottom_b.ToLocal(mouse_pos))){
+			return true;
+		}
+		return false;
+	}
 
 	bool check_ui_pressed(){
-		Control bottom_b=UI.get_ui().get_bottom_b();
-		if(bottom_b.GetGlobalRect().HasPoint(mouse_pos)){
+		Sprite2D bottom_b=UI.get_ui().get_setting();
+		if(bottom_b.GetRect().HasPoint(bottom_b.ToLocal(mouse_pos))){
 			CardEvent nevent=new CardEvent();
 			nevent.event_type=CardEvent.Type.Settings;
 			MonoControl.get_control().add_card_event(nevent);

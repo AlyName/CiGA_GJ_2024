@@ -16,11 +16,11 @@ public partial class Camera : Camera2D{
 	{
 	}
 
-	public async Task shake(float duration, float strength){
+	public async Task shake(float duration, float strength,float eta=0.95f){
 		for(int i=0; i<20*duration; i++){
 			Position=new Vector2(GD.Randf()*strength, GD.Randf()*strength);
 			await Main.get_main().wait_time(0.01f);
-			strength*=0.95f;
+			strength*=eta;
 		}
 		Position=Vector2.Zero;
 	}

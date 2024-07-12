@@ -20,6 +20,7 @@ public sealed partial class Item : Luban.BeanBase
         { if(!_buf["card_type_s"].IsString) { throw new SerializationException(); }  CardTypeS = _buf["card_type_s"]; }
         { if(!_buf["is_use_in_level"].IsBoolean) { throw new SerializationException(); }  IsUseInLevel = _buf["is_use_in_level"]; }
         { if(!_buf["default_card_description"].IsString) { throw new SerializationException(); }  DefaultCardDescription = _buf["default_card_description"]; }
+        { if(!_buf["default_description_2"].IsString) { throw new SerializationException(); }  DefaultDescription2 = _buf["default_description_2"]; }
         { if(!_buf["card_type_id"].IsNumber) { throw new SerializationException(); }  CardTypeId = _buf["card_type_id"]; }
         { if(!_buf["event_0_type"].IsString) { throw new SerializationException(); }  Event0Type = _buf["event_0_type"]; }
         { if(!_buf["event_1_type"].IsString) { throw new SerializationException(); }  Event1Type = _buf["event_1_type"]; }
@@ -43,6 +44,7 @@ public sealed partial class Item : Luban.BeanBase
     public readonly string CardTypeS;
     public readonly bool IsUseInLevel;
     public readonly string DefaultCardDescription;
+    public readonly string DefaultDescription2;
     public readonly int CardTypeId;
     public readonly string Event0Type;
     public readonly string Event1Type;
@@ -78,6 +80,7 @@ public sealed partial class Item : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -86,6 +89,7 @@ public sealed partial class Item : Luban.BeanBase
         + "cardTypeS:" + CardTypeS + ","
         + "isUseInLevel:" + IsUseInLevel + ","
         + "defaultCardDescription:" + DefaultCardDescription + ","
+        + "defaultDescription2:" + DefaultDescription2 + ","
         + "cardTypeId:" + CardTypeId + ","
         + "event0Type:" + Event0Type + ","
         + "event1Type:" + Event1Type + ","

@@ -5,7 +5,7 @@ using System.Diagnostics;
 public partial class Card : CardMove{
 	public int card_level,score,card_type;
 
-	public string card_type_s,card_description;
+	public string card_type_s,card_description,card_description_2,card_name;
 
 	public Color n_color;
 
@@ -21,9 +21,11 @@ public partial class Card : CardMove{
 		card_type_s=n_card_item.CardTypeS;
 		card_description=n_card_item.DefaultCardDescription;
 		card_type=n_card_item.CardTypeId;
+		card_name=n_card_item.CardDisplayName;
 		is_use_in_level=n_card_item.IsUseInLevel;
 		is_instant_effect=n_card_item.IsInstantEffect;
 		score=n_card_item.BaseScore;
+        card_description_2=n_card_item.DefaultDescription2;
 		if(n_card_item.Event0Type!=""){
 			event_0=new CardEvent((CardEvent.Type)Enum.Parse(typeof(CardEvent.Type),n_card_item.Event0Type));
 		}
@@ -37,7 +39,7 @@ public partial class Card : CardMove{
 		animated=new AnimatedSprite2D();
 		animated.SpriteFrames=ResourceLoader.Load<SpriteFrames>("res://imgs/"+n_card_item.Texture);
 		animated.ZIndex=-1;
-		Texture=ResourceLoader.Load<Texture2D>("res://imgs/border_test.png");
+		Texture=ResourceLoader.Load<Texture2D>("res://imgs/border_enlarge.png");
 	}
 	protected override void use_card(){
 		CardEvent now_event=new CardEvent();
@@ -69,6 +71,12 @@ public partial class Card : CardMove{
 		}
 		now_event.pos=Position;
 		MonoControl.get_control().add_card_event(now_event);
+
+		if(is_use==0){
+			AudioManager.Instance.PlaySound(AudioEnum.PlayUp);
+		}else{
+			AudioManager.Instance.PlaySound(AudioEnum.PlayDown);
+		}
 	}
 
 	Action<LevelManager,int> generate_effect_action(EffectManager.Type n_type){
@@ -104,7 +112,10 @@ public partial class Card : CardMove{
 		}
 		if(can_drag==1){
 			// TODO
-			UI.get_ui().set_description(card_description);
+			string n_card_description=card_description.Replace("%N%",(8-MonoControl.get_control().get_duplicate_times()).ToString());
+			UI.get_ui().set_description(n_card_description);
+            
+            UI.get_ui().set_description_2(card_description_2);
 		}
 	}
 }

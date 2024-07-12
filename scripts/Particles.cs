@@ -10,7 +10,7 @@ public partial class Particles : Node2D{
 	[Export]
 	public Texture2D explode_star;
 	[Export]
-	public PackedScene orb_scene,ring_scene;
+	public PackedScene orb_scene,ring_scene,multi_scene_1;
 	public override void _Ready(){
 		
 	}
@@ -41,19 +41,24 @@ public partial class Particles : Node2D{
 		ring.Set("position",pos);
 		AddChild(ring);
 	}
+	public void explode_multi(Vector2 pos){
+		var multi = multi_scene_1.Instantiate();
+		multi.Set("position",pos);
+		AddChild(multi);
+	}
 
 	public void card_explode(Vector2 pos,int score){
-		if(score<=5){
+		if(score<=10){
 			explode_orbs(pos,16);
 		}else if(score<=50){
 			explode_orbs(pos,64);
 			Camera.get_camera().shake(3f,5f);
 		}else if(score<=250){
 			explode_orbs(pos,256);
-			Camera.get_camera().shake(5f,10f);
+			Camera.get_camera().shake(5f,10f,0.99f);
 		}else{
-			explode_orbs(pos,512);
-			Camera.get_camera().shake(10f,20f);
+			explode_multi(pos);
+			Camera.get_camera().shake(10f,20f,0.99f);
 		}
 	}
 	public static Particles get_particles(){

@@ -94,10 +94,10 @@ public partial class NumTween : RichTextLabel
 	public override void _Process(double delta)
 	{
 		// if (numStart != numEnd)
-		Text = numStart.ToString();
+		Text = $"[center]{numStart.ToString().PadLeft(6,'0')}";
 		// else 
 		if(shake)
-			Text = $"[shake rate = 30 level = 10]{numStart.ToString()}";
+			Text = $"[shake rate = 30 level = 10][center]{numStart.ToString().PadLeft(6,'0')}";
 	}
 	
 	private void OnTweenCompleted(object obj, NodePath key)

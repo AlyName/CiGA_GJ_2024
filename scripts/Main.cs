@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 public partial class Main : Node2D{
 	[Export]
+	public string default_desc_2;
+	[Export]
 	public PackedScene Card;
 
 	[Export]
@@ -30,15 +32,20 @@ public partial class Main : Node2D{
 		// }
 		AnimatedSprite2D fg=GetNode<AnimatedSprite2D>("Foreground");
 		// 设置不循环播放
-		
+		fg.Frame=0;
 		fg.Play();
-		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Start);
+		MonoControl.get_control().get_in_state(MonoControl.Gamestate.Prolog);
 		set_first_play();
 	}
 
 	async Task set_first_play(){
-		await wait_time(3.5f);
-		UI.get_ui().ZIndex=150;
+		MouseInput.get_mouse_input().is_abled=false;
+		await wait_time(0.1f);
+		UI.get_ui().up_std_pos=UI.get_ui().up_up_pos;
+		await wait_time(4.9f);
+		// AnimatedSprite2D fg=GetNode<AnimatedSprite2D>("Foreground");
+		// fg.Visible=false;
+		MouseInput.get_mouse_input().is_abled=true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,6 +72,15 @@ public partial class Main : Node2D{
 	public async Task wait_time_add_event(float nt,CardEvent ne){
 		await wait_time(nt);
 		MonoControl.get_control().add_card_event(ne);
+	}
+
+	public void set_full_screen(){
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+	}
+	public void set_windowed(){
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+		DisplayServer.WindowSetSize(new Vector2I(1919,1079));
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 	}
 	public static Main get_main(){
 		return instance;

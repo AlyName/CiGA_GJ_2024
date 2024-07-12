@@ -1,0 +1,31 @@
+[gd_scene load_steps=13 format=3 uid="uid://chitqg7yerixa"]
+
+[ext_resource type="Script" path="res://scripts/AudioManager.cs" id="1_pb50y"]
+[ext_resource type="AudioStream" uid="uid://u3ckbnutgorm" path="res://Audio/上划.mp3" id="2_s1y18"]
+[ext_resource type="AudioStream" uid="uid://bqx2atxa52dxk" path="res://Audio/下划.mp3" id="3_smh2b"]
+[ext_resource type="AudioStream" uid="uid://1ihpl616wx2u" path="res://Audio/主页面bgm.mp3" id="4_2lr76"]
+[ext_resource type="AudioStream" uid="uid://dj5817k8j7v8f" path="res://Audio/游戏bgm.mp3" id="5_vvntm"]
+[ext_resource type="AudioStream" uid="uid://d4je3h62sw2wu" path="res://Audio/倒计时.mp3" id="6_1sp54"]
+[ext_resource type="AudioStream" uid="uid://dkhilsm2t21i8" path="res://Audio/按钮.mp3" id="7_80en0"]
+[ext_resource type="AudioStream" uid="uid://c2868wtr5502q" path="res://Audio/笑.mp3" id="8_kba32"]
+[ext_resource type="AudioStream" uid="uid://c7grqdq2ejbjt" path="res://Audio/欢呼.mp3" id="9_ncdri"]
+[ext_resource type="AudioStream" uid="uid://rbhhptsthn78" path="res://Audio/大声欢呼.mp3" id="10_2rrk5"]
+[ext_resource type="AudioStream" uid="uid://vympdclkj7ga" path="res://Audio/满堂喝彩.mp3" id="11_ye00n"]
+[ext_resource type="AudioStream" uid="uid://dmh8afkkoowi1" path="res://Audio/蜂鸣器5s.mp3" id="12_y2cvk"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("audioStreamPlayer")]
+script = ExtResource("1_pb50y")
+playUp = ExtResource("2_s1y18")
+playDown = ExtResource("3_smh2b")
+mainMenu = ExtResource("4_2lr76")
+game = ExtResource("5_vvntm")
+countDown = ExtResource("6_1sp54")
+setting = ExtResource("7_80en0")
+laughX1 = ExtResource("8_kba32")
+laughX2 = ExtResource("9_ncdri")
+laughX3 = ExtResource("10_2rrk5")
+laughX4 = ExtResource("11_ye00n")
+bee = ExtResource("12_y2cvk")
+audioStreamPlayer = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

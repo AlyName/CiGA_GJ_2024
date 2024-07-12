@@ -2,19 +2,9 @@
 
 [ext_resource type="FontFile" uid="uid://bkohqnu4gt00r" path="res://yan.ttf" id="1_6cif2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h407e"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdt0a"]
 
 [resource]
 default_font = ExtResource("1_6cif2")
 default_font_size = 30
-Panel/styles/panel = SubResource("StyleBoxFlat_h407e")
+Panel/styles/panel = SubResource("StyleBoxEmpty_hdt0a")

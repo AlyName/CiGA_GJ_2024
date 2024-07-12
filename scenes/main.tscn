@@ -1,43 +1,86 @@
-[gd_scene load_steps=25 format=3 uid="uid://r68vkg2gyh5v"]
+[gd_scene load_steps=63 format=3 uid="uid://r68vkg2gyh5v"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_eimto"]
 [ext_resource type="PackedScene" uid="uid://fyvwpo14dwev" path="res://scenes/card_move.tscn" id="2_pbhbu"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="3_86mme"]
 [ext_resource type="SpriteFrames" uid="uid://qlbncwejmto" path="res://imgs/start.tres" id="3_igiec"]
 [ext_resource type="Script" path="res://scripts/CardWheel.cs" id="3_m7c4h"]
+[ext_resource type="Script" path="res://scripts/Help.cs" id="3_pqas8"]
+[ext_resource type="Texture2D" uid="uid://cdcxyotwewdjf" path="res://imgs/help/帮助实例.png" id="4_6ai34"]
 [ext_resource type="Script" path="res://scripts/MouseInput.cs" id="4_53tod"]
+[ext_resource type="Texture2D" uid="uid://6j5pqvc1opxt" path="res://imgs/help/2.png" id="5_briyv"]
 [ext_resource type="Script" path="res://scripts/MonoControl.cs" id="5_lw712"]
+[ext_resource type="Texture2D" uid="uid://b37od4mm2bwxv" path="res://imgs/help/3.png" id="6_k4pv0"]
 [ext_resource type="Script" path="res://scripts/CardGenerator.cs" id="6_qp5ip"]
+[ext_resource type="Texture2D" uid="uid://l0bw1wgfc2qt" path="res://imgs/shengzi.png" id="9_3plfc"]
+[ext_resource type="Texture2D" uid="uid://d0q2algrxpsu4" path="res://imgs/UI/下框特效栏.png" id="10_0j7x1"]
 [ext_resource type="Script" path="res://scripts/Tween/NumTween.cs" id="10_lgcf7"]
+[ext_resource type="Texture2D" uid="uid://b0c4kt8ojy2ya" path="res://imgs/UI/卡牌展示.png" id="11_0r2cm"]
+[ext_resource type="SpriteFrames" uid="uid://cphbncy8gjox4" path="res://card_name.tres" id="11_33arb"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="11_bhodv"]
 [ext_resource type="Theme" uid="uid://cek28oqo7om5j" path="res://test_theme.tres" id="11_c8cim"]
+[ext_resource type="Texture2D" uid="uid://cpihkovmne5af" path="res://imgs/UI/上数值框.png" id="12_pgk7n"]
+[ext_resource type="Script" path="res://scripts/Prolog.cs" id="13_7yyxf"]
+[ext_resource type="SpriteFrames" uid="uid://b5cip1n8a5r60" path="res://imgs/fire.tres" id="13_8rwt2"]
+[ext_resource type="Texture2D" uid="uid://c56qsr4sb0oad" path="res://imgs/UI/太阳（回合）/上.png" id="13_57j3n"]
+[ext_resource type="SpriteFrames" uid="uid://bdpshpaxyl5mw" path="res://imgs/prolog_sun.tres" id="14_2hiod"]
+[ext_resource type="Texture2D" uid="uid://xnuv2pesdvvn" path="res://imgs/UI/蜘蛛.png" id="14_a8ygp"]
+[ext_resource type="Texture2D" uid="uid://coh4h4x4y34o2" path="res://imgs/big_bg.png" id="14_smnjf"]
 [ext_resource type="PackedScene" uid="uid://c4piajdgwkvc" path="res://scenes/particle_orbs.tscn" id="14_ttumg"]
 [ext_resource type="PackedScene" uid="uid://cc37pc5kq4b8f" path="res://scenes/particle_ring.tscn" id="15_ssb16"]
-[ext_resource type="Texture2D" uid="uid://bt12dg2mbegpq" path="res://imgs/gear1.png" id="18_d8pls"]
+[ext_resource type="Script" path="res://scripts/Sun.cs" id="16_5nf0s"]
+[ext_resource type="Texture2D" uid="uid://b3xkv86cf6s2v" path="res://imgs/气泡框透明底/完整.png" id="16_ndixb"]
+[ext_resource type="Texture2D" uid="uid://b5v7n0ggp1w1j" path="res://imgs/light.png" id="16_tmtyp"]
+[ext_resource type="Texture2D" uid="uid://ycfq8sqjecjf" path="res://imgs/UI/太阳（回合）/中.png" id="17_3bbln"]
+[ext_resource type="Texture2D" uid="uid://w5thpb6bwa7c" path="res://imgs/UI/太阳（回合）/下.png" id="18_cyu7h"]
 [ext_resource type="PackedScene" uid="uid://weeartb8u6m3" path="res://scenes/music_player.tscn" id="18_hoq7l"]
+[ext_resource type="SpriteFrames" uid="uid://c8xsv78lpnr7h" path="res://imgs/finger.tres" id="18_iiiwu"]
 [ext_resource type="PackedScene" uid="uid://c045ef51sfho1" path="res://scenes/particles.tscn" id="18_ondsx"]
+[ext_resource type="FontFile" uid="uid://bkohqnu4gt00r" path="res://yan.ttf" id="18_v2bpa"]
+[ext_resource type="Texture2D" uid="uid://m2ijm3nfboj6" path="res://imgs/setting/齿轮.png" id="19_8to83"]
+[ext_resource type="Texture2D" uid="uid://c2k4u6ffgkrno" path="res://imgs/UI/太阳（回合）/左.png" id="19_8xhwl"]
 [ext_resource type="Material" uid="uid://nwfrrujvv528" path="res://explode.tres" id="19_oqgfq"]
+[ext_resource type="Texture2D" uid="uid://c0m56jye25qih" path="res://imgs/UI/太阳（回合）/右.png" id="20_0i64s"]
+[ext_resource type="Script" path="res://scripts/Setting.cs" id="20_aytbq"]
 [ext_resource type="Texture2D" uid="uid://cuvhc48hwua51" path="res://imgs/star.png" id="21_2de2k"]
+[ext_resource type="Texture2D" uid="uid://dtpg6iigt1vyu" path="res://imgs/number/1.png" id="21_ia6yw"]
+[ext_resource type="Texture2D" uid="uid://by5d3yoow6gtl" path="res://imgs/setting/变小变暗.png" id="21_omaw3"]
+[ext_resource type="Texture2D" uid="uid://dvmaix8j0g7qp" path="res://imgs/pd.png" id="22_3v0tv"]
 [ext_resource type="Script" path="res://scripts/DataLoader/DataLoader.cs" id="22_8gxdh"]
-[ext_resource type="Texture2D" uid="uid://ipvbmjswp2tc" path="res://imgs/test_background.png" id="145_wwn01"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60l4q"]
+[ext_resource type="Texture2D" uid="uid://dvs4x7ewg7xho" path="res://imgs/number/2.png" id="22_jqtxv"]
+[ext_resource type="Texture2D" uid="uid://cjn3ljwjhe7tl" path="res://imgs/number/3.png" id="23_b1ijj"]
+[ext_resource type="Texture2D" uid="uid://bf1dppse0vbhc" path="res://imgs/number/4.png" id="24_yrp50"]
+[ext_resource type="Texture2D" uid="uid://ca01mc88hf0pt" path="res://imgs/number/5.png" id="25_jmat2"]
+[ext_resource type="Script" path="res://scripts/InfoBoard.cs" id="28_wcpro"]
+[ext_resource type="Texture2D" uid="uid://co8qpgihbkppf" path="res://imgs/信息板子/上亮.png" id="33_7uwqn"]
+[ext_resource type="Texture2D" uid="uid://vt36ge11ijug" path="res://imgs/信息板子/全亮.png" id="34_qehhu"]
+[ext_resource type="Texture2D" uid="uid://t5k2bnbvab78" path="res://imgs/信息板子/下亮.png" id="35_ao7en"]
+[ext_resource type="Texture2D" uid="uid://coiqg8v7s8jxk" path="res://imgs/LOGO.2.png" id="36_vj44b"]
+[ext_resource type="PackedScene" uid="uid://chitqg7yerixa" path="res://scenes/AudioManager.tscn" id="41_7yv7d"]
+[ext_resource type="PackedScene" uid="uid://cws41ummrn5he" path="res://scenes/MultiParticleExample1.tscn" id="43_px8k3"]
+[ext_resource type="Script" path="res://scripts/VideoPlayer.cs" id="46_a3ii0"]
+[ext_resource type="Script" path="res://scripts/Background.cs" id="59_0reoi"]
+[ext_resource type="Texture2D" uid="uid://3t656e53apvx" path="res://imgs/start/帘幕124.png" id="127_x4xxo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mgiy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1vfhe"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vw1b8"]
-texture = ExtResource("18_d8pls")
+texture = ExtResource("22_3v0tv")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_eimto")
+default_desc_2 = "打出以獲得 %% 分"
 Card = ExtResource("2_pbhbu")
 
+[node name="Help" type="Node2D" parent="."]
+z_index = 700
+position = Vector2(960, 540)
+script = ExtResource("3_pqas8")
+helps = Array[Texture2D]([ExtResource("4_6ai34"), ExtResource("5_briyv"), ExtResource("6_k4pv0")])
+
 [node name="Foreground" type="AnimatedSprite2D" parent="."]
-z_index = 100
+z_index = 410
 position = Vector2(960, 540)
 sprite_frames = ExtResource("3_igiec")
+frame = 124
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -55,129 +98,221 @@ script = ExtResource("5_lw712")
 [node name="CardGenerator" type="Node" parent="."]
 script = ExtResource("6_qp5ip")
 
-[node name="UI" type="VBoxContainer" parent="."]
+[node name="UISprites" type="Node2D" parent="."]
+
+[node name="Prolog" type="Node2D" parent="UISprites"]
+z_index = 260
+position = Vector2(960, 540)
+script = ExtResource("13_7yyxf")
+prolog_str = PackedStringArray("讓我瞧瞧，又來了一個年輕人。", "你也想掙脫命運的桎梏嗎？", "哦，我明白了，你還什麽都不知道。", "不用緊張，你要做的很簡單。看到你面前的卡牌了嗎？", "對，就是那個，在空白的地方左右滑動，你可以選擇你要的命……我是説卡牌。", "上下拖動它，你可以選擇你要實現的效果。", "僅此而已，是不是很簡單？", "代價是什麽？哦，那就是另一個故事了，現在，好戲開場！")
+
+[node name="PrologBackground" type="Sprite2D" parent="UISprites/Prolog"]
+texture = ExtResource("14_smnjf")
+
+[node name="PrologSun" type="AnimatedSprite2D" parent="UISprites/Prolog"]
+position = Vector2(-599, 210)
+sprite_frames = ExtResource("14_2hiod")
+
+[node name="PrologBox" type="Sprite2D" parent="UISprites/Prolog"]
+position = Vector2(-571, -368)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_ndixb")
+
+[node name="FireArrow" type="AnimatedSprite2D" parent="UISprites"]
+z_index = 110
+position = Vector2(958, 686)
+sprite_frames = ExtResource("13_8rwt2")
+animation = &"red"
+
+[node name="Shengzi" type="Sprite2D" parent="UISprites"]
+z_index = -30
+position = Vector2(960, 540)
+texture = ExtResource("9_3plfc")
+
+[node name="Pillar" type="Sprite2D" parent="UISprites"]
+z_index = 160
+position = Vector2(960, 540)
+texture = ExtResource("127_x4xxo")
+
+[node name="CardName" type="AnimatedSprite2D" parent="UISprites"]
+z_index = 120
+position = Vector2(960, 241)
+sprite_frames = ExtResource("11_33arb")
+animation = &"mono"
+
+[node name="BottomMid" type="Sprite2D" parent="UISprites"]
+z_index = -10
+position = Vector2(960, 994)
+texture = ExtResource("10_0j7x1")
+
+[node name="BottomBut" type="Sprite2D" parent="UISprites"]
+z_index = -20
+position = Vector2(960, 933)
+texture = ExtResource("11_0r2cm")
+
+[node name="Up" type="Sprite2D" parent="UISprites"]
+z_index = 130
+position = Vector2(960, 100)
+texture = ExtResource("12_pgk7n")
+
+[node name="Sun" type="Sprite2D" parent="UISprites"]
+z_index = 140
+position = Vector2(960, 100)
+texture = ExtResource("13_57j3n")
+script = ExtResource("16_5nf0s")
+suns = Array[Texture2D]([ExtResource("17_3bbln"), ExtResource("13_57j3n"), ExtResource("18_cyu7h"), ExtResource("19_8xhwl"), ExtResource("20_0i64s")])
+
+[node name="Spider" type="Sprite2D" parent="UISprites"]
+z_index = 150
+position = Vector2(186, 288)
+texture = ExtResource("14_a8ygp")
+
+[node name="PointLight2D" type="PointLight2D" parent="UISprites"]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 1)
+range_z_min = -100
+range_z_max = 400
+texture = ExtResource("16_tmtyp")
+metadata/_edit_lock_ = true
+
+[node name="Finger" type="AnimatedSprite2D" parent="UISprites"]
+position = Vector2(1648, 822)
+sprite_frames = ExtResource("18_iiiwu")
+animation = &"Idle"
+
+[node name="Setting" type="Sprite2D" parent="UISprites"]
+position = Vector2(1699, 240)
+texture = ExtResource("19_8to83")
+script = ExtResource("20_aytbq")
+light = ExtResource("19_8to83")
+dark = ExtResource("21_omaw3")
+
+[node name="InfoBoard" type="Sprite2D" parent="UISprites"]
+z_index = 180
+position = Vector2(321, 520)
+texture = ExtResource("34_qehhu")
+script = ExtResource("28_wcpro")
+up = ExtResource("33_7uwqn")
+middle = ExtResource("34_qehhu")
+down = ExtResource("35_ao7en")
+
+[node name="Title" type="Sprite2D" parent="UISprites"]
+z_index = 250
+position = Vector2(916, 189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("36_vj44b")
+
+[node name="EffectDisplay" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 808.0
 offset_bottom = 612.0
 script = ExtResource("11_bhodv")
+label_mid_texture = Array[Texture2D]([null, ExtResource("21_ia6yw"), ExtResource("22_jqtxv"), ExtResource("23_b1ijj"), ExtResource("24_yrp50"), ExtResource("25_jmat2")])
+metadata/_edit_lock_ = true
 
-[node name="Scores" type="HBoxContainer" parent="UI"]
-custom_minimum_size = Vector2(1894, 193)
+[node name="LabelA" type="RichTextLabel" parent="UI"]
+z_index = 200
 layout_mode = 2
-
-[node name="PanelA" type="Panel" parent="UI/Scores"]
-custom_minimum_size = Vector2(304, 123)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme = ExtResource("11_c8cim")
-
-[node name="LabelA" type="RichTextLabel" parent="UI/Scores/PanelA"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -25.0
-offset_right = 125.0
-offset_bottom = 25.0
+offset_left = 254.0
+offset_top = 80.0
+offset_right = 454.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_c8cim")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_v2bpa")
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "aaa"
+text = "[center]000100"
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("10_lgcf7")
 
-[node name="PanelMid" type="Panel" parent="UI/Scores"]
-custom_minimum_size = Vector2(771, 184)
+[node name="LabelB" type="RichTextLabel" parent="UI"]
+z_index = 200
 layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("11_c8cim")
-
-[node name="LabelMid" type="Label" parent="UI/Scores/PanelMid"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -13.0
-offset_right = 20.0
-offset_bottom = 13.0
+offset_left = 1416.0
+offset_top = 79.0
+offset_right = 1616.0
+offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "MID"
-
-[node name="PanelB" type="Panel" parent="UI/Scores"]
-custom_minimum_size = Vector2(304, 123)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
 theme = ExtResource("11_c8cim")
-
-[node name="LabelB" type="RichTextLabel" parent="UI/Scores/PanelB"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -25.0
-offset_right = 125.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_v2bpa")
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "aaa"
+text = "[center]000000"
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("10_lgcf7")
 
-[node name="Description" type="HBoxContainer" parent="UI"]
+[node name="LabelName" type="RichTextLabel" parent="UI"]
+visible = false
+z_index = 200
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PanelDescription" type="Panel" parent="UI/Description"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("11_c8cim")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_60l4q")
-
-[node name="LabelDescription" type="Label" parent="UI/Description/PanelDescription"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = 860.0
+offset_top = 240.0
+offset_right = 1060.0
+offset_bottom = 290.0
 grow_horizontal = 2
-text = "This is a description"
-
-[node name="CardDeck" type="HBoxContainer" parent="UI"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
-
-[node name="Bottom" type="HBoxContainer" parent="UI"]
-layout_mode = 2
-size_flags_vertical = 10
-
-[node name="PanelBottomA" type="Panel" parent="UI/Bottom"]
-custom_minimum_size = Vector2(359, 380)
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 8
+grow_vertical = 2
 theme = ExtResource("11_c8cim")
-theme_override_styles/panel = SubResource("StyleBoxTexture_0mgiy")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_v2bpa")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]+"
+scroll_active = false
+autowrap_mode = 0
 
-[node name="LabelBottomA" type="Label" parent="UI/Bottom/PanelBottomA"]
+[node name="LabelMid" type="Sprite2D" parent="UI"]
+z_index = 200
+position = Vector2(949, 108)
+texture = ExtResource("21_ia6yw")
+
+[node name="LabelDescription2" type="Label" parent="UI"]
+z_index = 200
+layout_mode = 2
+offset_left = 185.0
+offset_top = 333.0
+offset_right = 442.0
+offset_bottom = 496.0
+grow_horizontal = 2
+rotation = -0.174533
+theme = ExtResource("11_c8cim")
+theme_override_colors/font_color = Color(0.101961, 0.0666667, 0.0156863, 1)
+theme_override_font_sizes/font_size = 25
+text = "打出这张牌啥用没有"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="LabelDescription" type="Label" parent="UI"]
+z_index = 200
+layout_mode = 2
+offset_left = 194.0
+offset_top = 650.0
+offset_right = 451.0
+offset_bottom = 813.0
+grow_horizontal = 2
+rotation = -0.174533
+theme = ExtResource("11_c8cim")
+theme_override_colors/font_color = Color(0.0352941, 0.0196078, 0.00392157, 1)
+theme_override_font_sizes/font_size = 25
+text = "不打的话没准还能加分呢你说是吧所以建议别打"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="LabelBottomA" type="Label" parent="UI"]
+visible = false
+z_index = 200
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 8
@@ -185,42 +320,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -15.5
-offset_right = 20.0
-offset_bottom = 15.5
+offset_left = -690.0
+offset_top = 254.0
+offset_right = -650.0
+offset_bottom = 332.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_c8cim")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 75
 text = "1"
 horizontal_alignment = 1
 
-[node name="PanelBottomMid" type="Panel" parent="UI/Bottom"]
-custom_minimum_size = Vector2(0, 100)
+[node name="PanelBottomA" type="Panel" parent="UI"]
+visible = false
+z_index = 180
+custom_minimum_size = Vector2(359, 380)
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = 50.0
+offset_top = 682.0
+offset_right = 409.0
+offset_bottom = 1062.0
+size_flags_horizontal = 2
 size_flags_vertical = 8
-size_flags_stretch_ratio = 5.0
 theme = ExtResource("11_c8cim")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_1vfhe")
+theme_override_styles/panel = SubResource("StyleBoxTexture_0mgiy")
 
-[node name="EffectDebug" type="Label" parent="UI/Bottom/PanelBottomMid"]
+[node name="PrologLabel" type="Label" parent="UI"]
+z_index = 270
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="PanelBottomB" type="Panel" parent="UI/Bottom"]
-custom_minimum_size = Vector2(432, 380)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 8
+offset_left = 143.0
+offset_top = 141.0
+offset_right = 593.0
+offset_bottom = 174.0
 theme = ExtResource("11_c8cim")
-theme_override_styles/panel = SubResource("StyleBoxTexture_vw1b8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "啊啊啊是妇女节大V尽快豆腐脑金卡v年加大开发女金卡的妇女短裤你检查可能大健康v那就开发"
+autowrap_mode = 1
 
 [node name="Particles" parent="." instance=ExtResource("18_ondsx")]
 explode_material = ExtResource("19_oqgfq")
 explode_star = ExtResource("21_2de2k")
 orb_scene = ExtResource("14_ttumg")
 ring_scene = ExtResource("15_ssb16")
+multi_scene_1 = ExtResource("43_px8k3")
 
 [node name="DataLoader" type="Node2D" parent="."]
 script = ExtResource("22_8gxdh")
@@ -230,4 +375,16 @@ script = ExtResource("22_8gxdh")
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(960, 540)
-texture = ExtResource("145_wwn01")
+texture = ExtResource("14_smnjf")
+script = ExtResource("59_0reoi")
+metadata/_edit_lock_ = true
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="."]
+z_index = 600
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("46_a3ii0")
+
+[node name="AudioManager" parent="." instance=ExtResource("41_7yv7d")]
+audioStreamPlayer = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+

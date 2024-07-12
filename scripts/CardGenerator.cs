@@ -34,17 +34,22 @@ public partial class CardGenerator : Node{
         
         var card=n_base_card;
         card.card_level=card_level;
+        card.Texture=GD.Load<Texture2D>("res://imgs/borders/"+card_level+".PNG");
+
+        
+        card.score=n_base_card.score*(int)Math.Pow(2,card_level);
+        if(card_score!=-1){
+            card.score=card_score;
+        }
 
         if(card.is_use_in_level){
             if(card_level==0)card.card_description=n_card_item.Description0;
             else if(card_level==1)card.card_description=n_card_item.Description1;
             else if(card_level==2)card.card_description=n_card_item.Description2;
             else if(card_level==3)card.card_description=n_card_item.Description3;
+            card.card_description_2=Main.get_main().default_desc_2.Replace("%%",card.score.ToString());
         }
-        card.score=n_base_card.score*(int)Math.Pow(2,card_level);
-        if(card_score!=-1){
-            card.score=card_score;
-        }
+
         card.Position = new Vector2(0,1000);
 		card.card_id=++overall_id;
         Main.get_main().AddChild(card);

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/Particles.cs" id="1_8ta2o"]
 
 [node name="Particles" type="Node2D"]
+z_index = 400
 script = ExtResource("1_8ta2o")

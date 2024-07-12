@@ -80,7 +80,7 @@ public partial class CardMove : Sprite2D{
 				drag_original_y=_initialPosition.Y;
 				//TODO
 				leave_place=CardWheel.get_wheel().delete_card(card_id);
-				ZIndex=100;
+				ZIndex=300;
 				state=1;
 			}
 		}else if(state==1){
@@ -137,10 +137,15 @@ public partial class CardMove : Sprite2D{
 				Vector2 random_shake=new Vector2(GD.Randf()*shake_r*2-shake_r,GD.Randf()*shake_r*2-shake_r);
 				Position=Position+random_shake;
 				n_scale=new Vector2(1.2f,1.2f);
+				if(Position.Y>upper_y-shake_r)InfoBoard.Instance.set_down();
+				else InfoBoard.Instance.set_up();
 			}else{
 				n_scale=new Vector2(1f,1f);
+				InfoBoard.Instance.set_center();
 			}
 			Modulate=new Color(1,1,1,1);
+		}else if(state==2){
+			InfoBoard.Instance.set_center();
 		}
 	}
 

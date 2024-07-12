@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 public partial class MonoControl : Node{
 
 	public enum Gamestate{
+		Prolog,
 		Start,
 		StartSettings,
 		VideoSetting,
@@ -38,10 +39,18 @@ public partial class MonoControl : Node{
 	}
 
 	void check_state(){
-	    if(now_state==Gamestate.Start){
+		if(now_state==Gamestate.Prolog){
+			if(now_event!=null){
+			    if(now_event.event_type==CardEvent.Type.GameStart){
+					event_discard();
+					get_in_state(Gamestate.Start);
+				}
+			}
+		}else if(now_state==Gamestate.Start){
 			if(now_event!=null){
 				if(now_event.event_type==CardEvent.Type.GameStart){
 					event_discard();
+					Particles.get_particles().card_explode(MouseInput.get_mouse_input().mouse_pos,200);
 					get_in_state(Gamestate.GameInit);
 				}else if(now_event.event_type==CardEvent.Type.GameEnd){
 				    GetTree().Quit();
@@ -117,7 +126,15 @@ public partial class MonoControl : Node{
 	}
 
 	void do_state(){
-	    if(now_state==Gamestate.InLevel){
+		if(now_state==Gamestate.Start){
+			if(now_event!=null){
+				if(now_event.event_type==CardEvent.Type.SetHelp){
+					event_discard();
+					Main.get_main().GetNode<Help>("Help").display_help();
+					CardGenerator.get_generator().generate_card("Setting");
+				}
+			}
+		}else if(now_state==Gamestate.InLevel){
 			// TODO
 			UI.get_ui().set_label_b_number(now_level.round_score);
 			UI.get_ui().set_label_a_number(now_level.goal_score-now_level.now_score);
@@ -133,38 +150,75 @@ public partial class MonoControl : Node{
 			}
 			if(now_level.level_end()==1){
 				CardEvent ne=new CardEvent(CardEvent.Type.GetIntoNextLevel);
-				UI.get_ui().set_description("Win!");
+				UI.get_ui().set_description("不錯，你贏了！");
 				Main.get_main().wait_time_add_event(1f,ne);
 			}else if(now_level.level_end()==-1){
 				CardEvent ne=new CardEvent(CardEvent.Type.GameOver);
-				UI.get_ui().set_description("Lose");
+				UI.get_ui().set_description("請重新來過……");
 				Main.get_main().wait_time_add_event(1f,ne);
 			}
+		}else if(now_state==Gamestate.Settings||now_state==Gamestate.StartSettings){
+			if(now_event!=null){
+				if(now_event.event_type==CardEvent.Type.SetFullScreen){
+					event_discard();
+					Main.get_main().set_full_screen();
+					CardGenerator.get_generator().generate_card("VideoSetting");
+				}else if(now_event.event_type==CardEvent.Type.SetWindow){
+					event_discard();
+					Main.get_main().set_windowed();
+					CardGenerator.get_generator().generate_card("VideoSetting");
+				}else if(now_event.event_type==CardEvent.Type.SetMusic){
+				    event_discard();
+					AudioManager.Instance.set_music();
+					CardGenerator.get_generator().generate_card("AudioSetting");
+				}else if(now_event.event_type==CardEvent.Type.SetSilence){
+				    event_discard();
+					AudioManager.Instance.set_silence();
+					CardGenerator.get_generator().generate_card("AudioSetting");
+				}
+			}
+		}
+
+		if(now_state!=Gamestate.InLevel){
+			UI.get_ui().set_label_bottom_a_number(-1);
 		}
 	}
 
 	public void get_in_state(Gamestate next_state){
-		if(next_state==Gamestate.Start){
+		if(next_state==Gamestate.Prolog){
+			now_state=next_state;
+			CardWheel.get_wheel().clear_cards();
+			CardWheel.get_wheel().clear_stack();
+			UI.get_ui().hide_all();
+			Main.get_main().GetNode<Prolog>("UISprites/Prolog").start_prolog();
+		}else if(next_state==Gamestate.Start){
 			now_state=next_state;
 		    CardWheel.get_wheel().clear_cards();
 			CardWheel.get_wheel().clear_stack();
 			UI.get_ui().hide_all();
 			now_level_num=0;
 			CardGenerator.get_generator().generate_card("Setting");
-			CardGenerator.get_generator().generate_card("Start");
+			CardGenerator.get_generator().generate_card("Start",3);
 			CardWheel.get_wheel().rotate_to(0);
+			AudioManager.Instance.PlaySound(AudioEnum.MainMenu);
+			UI.get_ui().display_title();
 		}else if(next_state==Gamestate.StartSettings){
 			UI.get_ui().hide_all();
 			now_state=next_state;
 		    CardWheel.get_wheel().clear_cards();
-			CardGenerator.get_generator().generate_card("VA");
+			CardGenerator.get_generator().generate_card("VideoSetting");
+			CardGenerator.get_generator().generate_card("AudioSetting");
 			CardGenerator.get_generator().generate_card("Continue");
 			CardWheel.get_wheel().rotate_to(0);
+			AudioManager.Instance.PlaySound(AudioEnum.Setting);
+			UI.get_ui().hide_title();
 		}else if(next_state==Gamestate.GameInit){
 			CardWheel.get_wheel().clear_cards();
 			CardWheel.get_wheel().clear_stack();
 			UI.get_ui().show_all();
 			now_level_num=1;
+			AudioManager.Instance.PlaySound(AudioEnum.Game);
+			UI.get_ui().hide_title();
 		}else if(next_state==Gamestate.LevelInit){
 			CardWheel.get_wheel().clear_cards();
 			CardWheel.get_wheel().clear_stack();
@@ -175,9 +229,11 @@ public partial class MonoControl : Node{
 			UI.get_ui().hide_all();
 			now_state=next_state;
 			CardWheel.get_wheel().clear_cards();
-			CardGenerator.get_generator().generate_card("VA");
+			CardGenerator.get_generator().generate_card("VideoSetting");
+			CardGenerator.get_generator().generate_card("AudioSetting");
 			CardGenerator.get_generator().generate_card("Continue");
 			CardWheel.get_wheel().rotate_to(0);
+			AudioManager.Instance.PlaySound(AudioEnum.Setting);
 		}else if(next_state==Gamestate.NextLevel){
 			CardGenerator.get_generator().generate_card("NextLevel");
 		}
@@ -215,6 +271,16 @@ public partial class MonoControl : Node{
 				}
 			}
 			CardGenerator.get_generator().generate_random_card(card_level);
+		}
+	}
+
+	public int get_duplicate_times(){
+		if(now_state==Gamestate.InLevel){
+			if(now_level==null)return 0;
+			else if(now_level.effect_manager==null)return 0;
+			return now_level.effect_manager.duplicate_times;
+		}else{
+			return 0;
 		}
 	}
 
